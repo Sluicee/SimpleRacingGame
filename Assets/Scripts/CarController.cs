@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class CarController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class CarController : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI speedText;     // Ссылка на TextMeshPro текст для отображения скорости
     [SerializeField] private TextMeshProUGUI lapTimeText;   // Ссылка на TextMeshPro текст для отображения времени круга
+    [SerializeField] private RectTransform speedIndicator;  // Ссылка на RectTransform для отображения текущей скорости
 
     public float currentSpeed = 0f;       // Текущая скорость машины
     private float currentAcceleration;    // Текущее ускорение машины
@@ -25,17 +27,26 @@ public class CarController : MonoBehaviour
     private bool lapStarted = false;      // Флаг начала круга
     private bool lapEnded = false;        // Флаг окончания круга
 
+    private bool isAccelerating = false;  // Флаг, указывающий, что кнопка ускорения зажата
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         currentAcceleration = acceleration; // Устанавливаем текущее ускорение в начальное значение
         lapTimeText.text = "Lap Time: 00:00.0"; // Инициализируем текст времени круга
+
+        // Установка начального значения для speedIndicator
+        if (speedIndicator != null)
+        {
+            speedIndicator.pivot = new Vector2(0f, 0f); // Установка якоря снизу
+            speedIndicator.sizeDelta = new Vector2(speedIndicator.sizeDelta.x, 0f); // Начальная высота = 0
+        }
     }
 
     void Update()
     {
         // Управление ускорением
-        if (Input.GetKey(KeyCode.W))
+        if (isAccelerating)
         {
             currentSpeed += currentAcceleration * Time.deltaTime;
         }
@@ -74,9 +85,12 @@ public class CarController : MonoBehaviour
             float lapTime = Time.time - lapStartTime;
             lapTimeText.text = "Lap Time: " + FormatTime(lapTime);
         }
+
+        // Обновление отображения скорости
+        UpdateSpeedIndicator();
     }
 
-    private void StartBoost()
+    public void StartBoost()
     {
         isBoosting = true;
         currentAcceleration = acceleration * boostMultiplier; // Увеличиваем ускорение
@@ -116,6 +130,30 @@ public class CarController : MonoBehaviour
         lapStarted = false;
         lapEnded = true;
         Debug.Log("Lap ended. Time: " + FormatTime(lapEndTime - lapStartTime));
+    }
+
+    // Обработчик нажатия кнопки ускорения
+    public void Run()
+    {
+        isAccelerating = true;
+        Debug.Log("Accelerate button pressed.");
+    }
+
+    // Обработчик отпускания кнопки ускорения
+    public void Stop()
+    {
+        isAccelerating = false;
+        Debug.Log("Accelerate button released.");
+    }
+
+    // Обновление отображения скорости
+    private void UpdateSpeedIndicator()
+    {
+        if (speedIndicator != null)
+        {
+            float heightRatio = Mathf.Clamp(currentSpeed / maxSpeed, 0f, 1f);
+            speedIndicator.sizeDelta = new Vector2(speedIndicator.sizeDelta.x, heightRatio * 55); // Изменение высоты в зависимости от скорости
+        }
     }
 
     // Свойства для проверки состояния круга
