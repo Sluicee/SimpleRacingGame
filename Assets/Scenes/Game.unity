@@ -455,8 +455,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 43.08737, y: -16.3344}
-  m_SizeDelta: {x: 78.1747, y: 20.6686}
+  m_AnchoredPosition: {x: 76.93058, y: -16.334412}
+  m_SizeDelta: {x: 145.8611, y: 20.6686}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &696118530
 MonoBehaviour:
@@ -478,7 +478,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 255
+  m_text: 'Speed: 400 km/h'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -728,6 +728,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1397373992590636, guid: e628f2d71193ae6418f3aef5ca3b923d,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 707022855}
+    - targetCorrespondingSourceObject: {fileID: 1397373992590636, guid: e628f2d71193ae6418f3aef5ca3b923d,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 707022851}
     - targetCorrespondingSourceObject: {fileID: 1397373992590636, guid: e628f2d71193ae6418f3aef5ca3b923d,
         type: 3}
@@ -788,6 +792,7 @@ MonoBehaviour:
   waypointGenerator: {fileID: 1564314072}
   reachThreshold: 7
   rotationSpeed: 2
+  controlLoss: {fileID: 707022855}
 --- !u!114 &707022853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -800,11 +805,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f578fc39d9317ac408d6c3bb64eb9f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 10
-  maxSpeed: 40
+  acceleration: 5
+  maxSpeed: 22
   brakeAcceleration: 20
   boostMultiplier: 4
   boostDuration: 5
+  currentSpeed: 0
+  speedText: {fileID: 696118530}
 --- !u!65 &707022854
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -826,6 +833,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.1, z: 2.21}
   m_Center: {x: 0, y: 0.05, z: 0}
+--- !u!114 &707022855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707022850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ae719ca5c4cf048b24da5c9068a1c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlLossTag: ControlLossArea
+  baseSpinImpulse: 1000
+  bounceForce: 15000
+  spinDamping: 1
+  cameraFollow: {fileID: 963194229}
 --- !u!1001 &919533705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1017,7 +1041,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 707022849}
   offset: {x: 0, y: 1.4, z: -3.3}
-  followSpeed: 30
+  followSpeed: 10
   lookSpeed: 5
 --- !u!1001 &1142529859
 PrefabInstance:
@@ -1963,6 +1987,146 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 477505610}
     m_Modifications:
+    - target: {fileID: 60749222144411797, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 76877084773184748, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 81226594555000702, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 231644598841577352, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 254589434683094787, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 913191975279788159, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 995724058813257590, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 1023791829817362185, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256282453495901004, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527547126040542074, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 1602973690132429992, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861559568340700687, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976189588977487571, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092786219607597964, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 2641731360091067456, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926263106703846284, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969598539968189607, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 3178588176770962914, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583181736082048029, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 3588223595134962892, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840785592478927342, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 3959488833890389822, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227852318880455834, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 4309799839782097490, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358559271620325497, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869198179087544429, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029211705607338340, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 5499334745799673530, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
     - target: {fileID: 5798724189896924608, guid: a3ce4271597121f44869d10a0a567d64,
         type: 3}
       propertyPath: m_RootOrder
@@ -2018,6 +2182,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5861405195274369801, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 6025713023075967791, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080128203584053398, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 6272548117575706698, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 6391643871584433151, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
     - target: {fileID: 6571565774580025210, guid: a3ce4271597121f44869d10a0a567d64,
         type: 3}
       propertyPath: m_Name
@@ -2027,6 +2216,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571565774580025210, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 7371624734039290966, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 7667086570950225598, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670869695541615193, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068180356190074885, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 8488784502072332565, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615313455492018544, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771550930531849831, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184206189719488066, guid: a3ce4271597121f44869d10a0a567d64,
+        type: 3}
+      propertyPath: m_TagString
+      value: ControlLossArea
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

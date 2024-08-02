@@ -3,14 +3,15 @@ using UnityEngine;
 
 public class PathFollower : MonoBehaviour
 {
-    public WaypointGenerator waypointGenerator;
-    public float reachThreshold = 0.1f; // Радиус, в котором точка считается достигнутой
-    public float rotationSpeed = 5f; // Скорость поворота
+    [SerializeField] private WaypointGenerator waypointGenerator;
+    [SerializeField] private float reachThreshold = 0.1f; // Радиус, в котором точка считается достигнутой
+    [SerializeField] private float rotationSpeed = 5f; // Скорость поворота
+    [SerializeField] private ControlLoss controlLoss; // Ссылка на скрипт ControlLoss
 
     private List<Vector3> smoothedWaypoints;
     private int currentWaypointIndex = 0;
 
-    void Start()
+    private void Start()
     {
         if (waypointGenerator != null)
         {
@@ -26,8 +27,14 @@ public class PathFollower : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
+        if (controlLoss != null && controlLoss.HasLostControl)
+        {
+            // Не следуем за путевыми точками, если управление потеряно
+            return;
+        }
+
         if (smoothedWaypoints != null && currentWaypointIndex < smoothedWaypoints.Count)
         {
             Vector3 targetWaypoint = smoothedWaypoints[currentWaypointIndex];

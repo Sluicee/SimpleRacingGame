@@ -3,19 +3,19 @@ using TMPro;
 
 public class CarController : MonoBehaviour
 {
-    public float acceleration = 5f;       // Ускорение машины
-    public float maxSpeed = 20f;          // Максимальная скорость машины
-    public float brakeAcceleration = 10f; // Тормозное ускорение
-    public float boostMultiplier = 2f;    // Множитель ускорения при бусте
-    public float boostDuration = 5f;      // Длительность буста
+    [SerializeField] private float acceleration = 5f;       // Ускорение машины
+    [SerializeField] private float maxSpeed = 20f;          // Максимальная скорость машины
+    [SerializeField] private float brakeAcceleration = 10f; // Тормозное ускорение
+    [SerializeField] private float boostMultiplier = 2f;    // Множитель ускорения при бусте
+    [SerializeField] private float boostDuration = 5f;      // Длительность буста
 
-    private float currentAcceleration;    // Текущее ускорение машины
-    private float currentSpeed = 0f;      // Текущая скорость машины
+    public float currentSpeed = 0f;       // Текущая скорость машины
     private bool isBoosting = false;      // Флаг, указывающий на активацию буста
     private float boostEndTime = 0f;      // Время окончания буста
 
+    private float currentAcceleration;    // Текущее ускорение машины
     private Rigidbody rb;
-    public TextMeshProUGUI speedText;     // Ссылка на TextMeshPro текст для отображения скорости
+    [SerializeField] private TextMeshProUGUI speedText;     // Ссылка на TextMeshPro текст для отображения скорости
 
     void Start()
     {
@@ -60,14 +60,14 @@ public class CarController : MonoBehaviour
         }
     }
 
-    void StartBoost()
+    private void StartBoost()
     {
         isBoosting = true;
         currentAcceleration *= boostMultiplier; // Увеличиваем ускорение
         boostEndTime = Time.time + boostDuration;
     }
 
-    void EndBoost()
+    private void EndBoost()
     {
         isBoosting = false;
         currentAcceleration = acceleration; // Возвращаемся к нормальному ускорению
