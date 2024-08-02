@@ -9,19 +9,27 @@ public class CarController : MonoBehaviour
     [SerializeField] private float boostMultiplier = 2f;    // Множитель ускорения при бусте
     [SerializeField] private float boostDuration = 5f;      // Длительность буста
 
+    [SerializeField] private TextMeshProUGUI speedText;     // Ссылка на TextMeshPro текст для отображения скорости
+    [SerializeField] private TextMeshProUGUI lapTimeText;   // Ссылка на TextMeshPro текст для отображения времени круга
+
     public float currentSpeed = 0f;       // Текущая скорость машины
+    private float currentAcceleration;    // Текущее ускорение машины
     private bool isBoosting = false;      // Флаг активации буста
     private bool hasBoosted = false;      // Флаг, указывающий, что буст уже был использован
     private float boostEndTime = 0f;      // Время окончания буста
 
-    private float currentAcceleration;    // Текущее ускорение машины
     private Rigidbody rb;
-    [SerializeField] private TextMeshProUGUI speedText;     // Ссылка на TextMeshPro текст для отображения скорости
+
+    private float lapStartTime;           // Время начала круга
+    private float lapEndTime;             // Время окончания круга
+    private bool lapStarted = false;      // Флаг начала круга
+    private bool lapEnded = false;        // Флаг окончания круга
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         currentAcceleration = acceleration; // Устанавливаем текущее ускорение в начальное значение
+        lapTimeText.text = "Lap Time: 00:00.0"; // Инициализируем текст времени круга
     }
 
     void Update()
@@ -59,6 +67,13 @@ public class CarController : MonoBehaviour
         {
             speedText.text = "Speed: " + Mathf.RoundToInt(currentSpeed * 10).ToString() + " km/h"; // Умножаем на 10 для более реалистичных значений скорости
         }
+
+        // Обновление времени круга
+        if (lapStarted && !lapEnded)
+        {
+            float lapTime = Time.time - lapStartTime;
+            lapTimeText.text = "Lap Time: " + FormatTime(lapTime);
+        }
     }
 
     private void StartBoost()
@@ -75,5 +90,42 @@ public class CarController : MonoBehaviour
         isBoosting = false;
         currentAcceleration = acceleration; // Возвращаемся к нормальному ускорению
         Debug.Log("Boost ended.");
+    }
+
+    // Форматирование времени в минуты, секунды и миллисекунды
+    private string FormatTime(float time)
+    {
+        int minutes = (int)(time / 60);
+        int seconds = (int)(time % 60);
+        int milliseconds = (int)((time - Mathf.Floor(time)) * 1000);
+
+        return string.Format("{0:D2}:{1:D2}.{2:D3}", minutes, seconds, milliseconds);
+    }
+
+    public void StartLap()
+    {
+        lapStartTime = Time.time;
+        lapStarted = true;
+        lapEnded = false;
+        Debug.Log("Lap started.");
+    }
+
+    public void EndLap()
+    {
+        lapEndTime = Time.time;
+        lapStarted = false;
+        lapEnded = true;
+        Debug.Log("Lap ended. Time: " + FormatTime(lapEndTime - lapStartTime));
+    }
+
+    // Свойства для проверки состояния круга
+    public bool LapStarted
+    {
+        get { return lapStarted; }
+    }
+
+    public bool LapEnded
+    {
+        get { return lapEnded; }
     }
 }
