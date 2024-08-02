@@ -1,28 +1,40 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class PathFollower : MonoBehaviour
 {
-    public Transform[] waypoints; // Массив путевых точек
+    public WaypointGenerator waypointGenerator;
     public float reachThreshold = 0.1f; // Радиус, в котором точка считается достигнутой
-    public float turnSpeed = 2f; // Скорость поворота машины
+    public float rotationSpeed = 5f; // Скорость поворота
 
-    private int currentWaypointIndex = 0; // Индекс текущей путевой точки
-    private Rigidbody rb;
+    private List<Vector3> smoothedWaypoints;
+    private int currentWaypointIndex = 0;
 
-    private void Start()
+    void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        if (waypointGenerator != null)
+        {
+            smoothedWaypoints = waypointGenerator.GetSmoothedWaypoints();
+            if (smoothedWaypoints == null || smoothedWaypoints.Count == 0)
+            {
+                Debug.LogError("Smoothed waypoints not generated or empty");
+            }
+        }
+        else
+        {
+            Debug.LogError("WaypointGenerator not assigned");
+        }
     }
 
-    private void FixedUpdate()
+    void Update()
     {
-        if (currentWaypointIndex < waypoints.Length)
+        if (smoothedWaypoints != null && currentWaypointIndex < smoothedWaypoints.Count)
         {
-            Transform targetWaypoint = waypoints[currentWaypointIndex];
-            Vector3 direction = targetWaypoint.position - transform.position;
+            Vector3 targetWaypoint = smoothedWaypoints[currentWaypointIndex];
+            Vector3 direction = targetWaypoint - transform.position;
 
             // Проверка достижения путевой точки
-            if (Vector3.Distance(transform.position, targetWaypoint.position) < reachThreshold)
+            if (Vector3.Distance(transform.position, targetWaypoint) < reachThreshold)
             {
                 currentWaypointIndex++;
             }
@@ -30,10 +42,8 @@ public class PathFollower : MonoBehaviour
             // Поворот машины в направлении движения
             if (direction != Vector3.zero)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
-
-                // Поворот через Rigidbody
-                rb.MoveRotation(Quaternion.RotateTowards(rb.rotation, targetRotation, turnSpeed * Time.deltaTime));
+                Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
+                transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
             }
         }
     }

@@ -1,42 +1,83 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class WaypointGenerator : MonoBehaviour
 {
-    public LineRenderer lineRenderer;
-    public Transform waypointPrefab;
-    public Transform car; // Ссылка на объект машины
-    public Transform[] waypoints;
+    public int pointsPerSegment = 10; // Количество точек на сегмент сплайна
 
-    void Start()
+    private List<Vector3> smoothedWaypoints;
+    private LineRenderer lineRenderer;
+    private Transform[] waypoints;
+
+    void Awake()
     {
-        GenerateWaypoints();
+        lineRenderer = GetComponent<LineRenderer>();
+        if (lineRenderer == null)
+        {
+            Debug.LogError("LineRenderer component not found.");
+            return;
+        }
+
+        InitializeWaypointsFromLineRenderer();
+        GenerateSmoothPath();
     }
 
-    void GenerateWaypoints()
+    void InitializeWaypointsFromLineRenderer()
     {
-        int numPoints = lineRenderer.positionCount;
-        waypoints = new Transform[numPoints];
+        int lineRendererPointCount = lineRenderer.positionCount;
+        waypoints = new Transform[lineRendererPointCount];
 
-        for (int i = 0; i < numPoints; i++)
+        for (int i = 0; i < lineRendererPointCount; i++)
         {
             Vector3 pointPosition = lineRenderer.GetPosition(i);
-            Transform waypoint = Instantiate(waypointPrefab, pointPosition, Quaternion.identity);
-            waypoint.name = "Waypoint" + i;
-            waypoint.SetParent(transform);
-            waypoints[i] = waypoint;
+            GameObject waypointObject = new GameObject("Waypoint" + i);
+            waypointObject.transform.position = pointPosition;
+            waypointObject.transform.parent = transform; // To keep the hierarchy organized
+            waypoints[i] = waypointObject.transform;
+        }
+    }
+
+    void GenerateSmoothPath()
+    {
+        smoothedWaypoints = new List<Vector3>();
+
+        if (waypoints.Length < 4)
+        {
+            Debug.LogError("Not enough waypoints to generate a smooth path");
+            return;
         }
 
-        if (car != null)
+        for (int i = 0; i < waypoints.Length - 1; i++)
         {
-            PathFollower pathFollower = car.GetComponent<PathFollower>();
-            if (pathFollower != null)
+            Vector3 p0 = waypoints[Mathf.Clamp(i - 1, 0, waypoints.Length - 1)].position;
+            Vector3 p1 = waypoints[i].position;
+            Vector3 p2 = waypoints[Mathf.Clamp(i + 1, 0, waypoints.Length - 1)].position;
+            Vector3 p3 = waypoints[Mathf.Clamp(i + 2, 0, waypoints.Length - 1)].position;
+
+            for (int j = 0; j < pointsPerSegment; j++)
             {
-                pathFollower.waypoints = waypoints;
+                float t = j / (float)pointsPerSegment;
+                Vector3 position = SplineUtils.GetCatmullRomPosition(t, p0, p1, p2, p3);
+                smoothedWaypoints.Add(position);
             }
         }
-        else
+
+        // Add the last waypoint
+        smoothedWaypoints.Add(waypoints[waypoints.Length - 1].position);
+
+        // Optionally, visualize the smoothed path using LineRenderer
+        if (lineRenderer != null)
         {
-            Debug.LogError("Car object is not assigned in WaypointGenerator");
+            lineRenderer.positionCount = smoothedWaypoints.Count;
+            lineRenderer.SetPositions(smoothedWaypoints.ToArray());
         }
+
+        // Отладочное сообщение для проверки генерации путевых точек
+        Debug.Log("Smoothed waypoints generated: " + smoothedWaypoints.Count);
+    }
+
+    public List<Vector3> GetSmoothedWaypoints()
+    {
+        return smoothedWaypoints;
     }
 }
