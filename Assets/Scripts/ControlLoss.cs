@@ -82,16 +82,11 @@ public class ControlLoss : MonoBehaviour
     {
         if (HasLostControl)
         {
-            // Логгирование угловой скорости до и после затухания
-            Debug.Log("Current angular velocity: " + rb.angularVelocity);
-
             // Постепенное затухание вращения
             Vector3 angularVelocity = rb.angularVelocity;
             angularVelocity = Vector3.Lerp(angularVelocity, Vector3.zero, spinDamping * Time.deltaTime);
 
             rb.angularVelocity = angularVelocity;
-
-            Debug.Log("Updated angular velocity: " + rb.angularVelocity);
         }
     }
 }

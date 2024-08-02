@@ -10,7 +10,8 @@ public class CarController : MonoBehaviour
     [SerializeField] private float boostDuration = 5f;      // Длительность буста
 
     public float currentSpeed = 0f;       // Текущая скорость машины
-    private bool isBoosting = false;      // Флаг, указывающий на активацию буста
+    private bool isBoosting = false;      // Флаг активации буста
+    private bool hasBoosted = false;      // Флаг, указывающий, что буст уже был использован
     private float boostEndTime = 0f;      // Время окончания буста
 
     private float currentAcceleration;    // Текущее ускорение машины
@@ -43,7 +44,7 @@ public class CarController : MonoBehaviour
         rb.MovePosition(rb.position + forwardMovement);
 
         // Управление бустом
-        if (Input.GetKeyDown(KeyCode.Space) && !isBoosting)
+        if (Input.GetKeyDown(KeyCode.Space) && !isBoosting && !hasBoosted)
         {
             StartBoost();
         }
@@ -63,13 +64,16 @@ public class CarController : MonoBehaviour
     private void StartBoost()
     {
         isBoosting = true;
-        currentAcceleration *= boostMultiplier; // Увеличиваем ускорение
+        currentAcceleration = acceleration * boostMultiplier; // Увеличиваем ускорение
         boostEndTime = Time.time + boostDuration;
+        hasBoosted = true; // Устанавливаем флаг использования буста
+        Debug.Log("Boost activated.");
     }
 
     private void EndBoost()
     {
         isBoosting = false;
         currentAcceleration = acceleration; // Возвращаемся к нормальному ускорению
+        Debug.Log("Boost ended.");
     }
 }
