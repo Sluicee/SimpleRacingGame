@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using TMPro;
 
 public class CarController : MonoBehaviour
 {
@@ -8,23 +9,26 @@ public class CarController : MonoBehaviour
     public float boostMultiplier = 2f;    // Множитель ускорения при бусте
     public float boostDuration = 5f;      // Длительность буста
 
+    private float currentAcceleration;    // Текущее ускорение машины
     private float currentSpeed = 0f;      // Текущая скорость машины
     private bool isBoosting = false;      // Флаг, указывающий на активацию буста
     private float boostEndTime = 0f;      // Время окончания буста
 
     private Rigidbody rb;
+    public TextMeshProUGUI speedText;     // Ссылка на TextMeshPro текст для отображения скорости
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        currentAcceleration = acceleration; // Устанавливаем текущее ускорение в начальное значение
     }
 
-    void FixedUpdate()
+    void Update()
     {
         // Управление ускорением
         if (Input.GetKey(KeyCode.W))
         {
-            currentSpeed += acceleration * Time.deltaTime;
+            currentSpeed += currentAcceleration * Time.deltaTime;
         }
         else
         {
@@ -48,18 +52,24 @@ public class CarController : MonoBehaviour
         {
             EndBoost();
         }
+
+        // Обновление TextMeshPro текста с текущей скоростью
+        if (speedText != null)
+        {
+            speedText.text = "Speed: " + Mathf.RoundToInt(currentSpeed * 10).ToString() + " km/h"; // Умножаем на 10 для более реалистичных значений скорости
+        }
     }
 
     void StartBoost()
     {
         isBoosting = true;
-        currentSpeed *= boostMultiplier;
+        currentAcceleration *= boostMultiplier; // Увеличиваем ускорение
         boostEndTime = Time.time + boostDuration;
     }
 
     void EndBoost()
     {
         isBoosting = false;
-        currentSpeed /= boostMultiplier;
+        currentAcceleration = acceleration; // Возвращаемся к нормальному ускорению
     }
 }
