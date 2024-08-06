@@ -33,7 +33,7 @@ public class CarController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         currentAcceleration = acceleration; // Устанавливаем текущее ускорение в начальное значение
-        lapTimeText.text = "Lap Time: 00:00.0"; // Инициализируем текст времени круга
+        lapTimeText.text = "00''00'000"; // Инициализируем текст времени круга
 
         // Установка начального значения для speedIndicator
         if (speedIndicator != null)
@@ -76,14 +76,14 @@ public class CarController : MonoBehaviour
         // Обновление TextMeshPro текста с текущей скоростью
         if (speedText != null)
         {
-            speedText.text = "Speed: " + Mathf.RoundToInt(currentSpeed * 10).ToString() + " km/h"; // Умножаем на 10 для более реалистичных значений скорости
+            speedText.text = Mathf.RoundToInt(currentSpeed * 10).ToString(); // Умножаем на 10 для более реалистичных значений скорости
         }
 
         // Обновление времени круга
         if (lapStarted && !lapEnded)
         {
             float lapTime = Time.time - lapStartTime;
-            lapTimeText.text = "Lap Time: " + FormatTime(lapTime);
+            lapTimeText.text = FormatTime(lapTime);
         }
 
         // Обновление отображения скорости
@@ -113,7 +113,7 @@ public class CarController : MonoBehaviour
         int seconds = (int)(time % 60);
         int milliseconds = (int)((time - Mathf.Floor(time)) * 1000);
 
-        return string.Format("{0:D2}:{1:D2}.{2:D3}", minutes, seconds, milliseconds);
+        return string.Format("{0:D2}''{1:D2}'{2:D3}", minutes, seconds, milliseconds);
     }
 
     public void StartLap()
@@ -152,7 +152,7 @@ public class CarController : MonoBehaviour
         if (speedIndicator != null)
         {
             float heightRatio = Mathf.Clamp(currentSpeed / maxSpeed, 0f, 1f);
-            speedIndicator.sizeDelta = new Vector2(speedIndicator.sizeDelta.x, heightRatio * 55); // Изменение высоты в зависимости от скорости
+            speedIndicator.sizeDelta = new Vector2(speedIndicator.sizeDelta.x, heightRatio * 107); // Изменение высоты в зависимости от скорости
         }
     }
 
