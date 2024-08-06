@@ -14,6 +14,8 @@ public class CarController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI lapTimeText;   // Ссылка на TextMeshPro текст для отображения времени круга
     [SerializeField] private RectTransform speedIndicator;  // Ссылка на RectTransform для отображения текущей скорости
 
+    [SerializeField] private RaceWinLose raceWinLose; // Ссылка на RaceWinLose
+
     public float currentSpeed = 0f;       // Текущая скорость машины
     private float currentAcceleration;    // Текущее ускорение машины
     private bool isBoosting = false;      // Флаг активации буста
@@ -33,7 +35,7 @@ public class CarController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         currentAcceleration = acceleration; // Устанавливаем текущее ускорение в начальное значение
-        lapTimeText.text = "00''00'000"; // Инициализируем текст времени круга
+        lapTimeText.text = "00'00' '000"; // Инициализируем текст времени круга
 
         // Установка начального значения для speedIndicator
         if (speedIndicator != null)
@@ -113,7 +115,7 @@ public class CarController : MonoBehaviour
         int seconds = (int)(time % 60);
         int milliseconds = (int)((time - Mathf.Floor(time)) * 1000);
 
-        return string.Format("{0:D2}''{1:D2}'{2:D3}", minutes, seconds, milliseconds);
+        return string.Format("{0:D2}'{1:D2}''{2:D3}", minutes, seconds, milliseconds);
     }
 
     public void StartLap()
@@ -129,6 +131,7 @@ public class CarController : MonoBehaviour
         lapEndTime = Time.time;
         lapStarted = false;
         lapEnded = true;
+        raceWinLose.ShowWinScreen(lapEndTime - lapStartTime); // Показываем экран победы с итоговым временем
         Debug.Log("Lap ended. Time: " + FormatTime(lapEndTime - lapStartTime));
     }
 

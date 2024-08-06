@@ -8,6 +8,8 @@ public class ControlLoss : MonoBehaviour
     [SerializeField] private float spinDamping = 2f; // Коэффициент затухания вращения
     [SerializeField] private CameraFollow cameraFollow; // Ссылка на скрипт CameraFollow
 
+    [SerializeField] private RaceWinLose raceWinLose;
+
     private CarController carController;
     private Rigidbody rb;
     private PathFollower pathFollower;
@@ -76,6 +78,8 @@ public class ControlLoss : MonoBehaviour
         {
             cameraFollow.SetCollisionMode(true);
         }
+
+        raceWinLose.ShowLoseScreen(); // Показываем экран проигрыша
     }
 
     private void FixedUpdate()
