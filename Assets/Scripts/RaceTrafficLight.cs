@@ -11,11 +11,14 @@ public class RaceTrafficLight : MonoBehaviour
     private float waitTime; // Время задержки перед началом гонки
     public bool LightsOff = false;
 
-    private Color initialColor = new Color32(138, 16, 16, 255); // Цвет #8A1010
-    private Color activeColor = new Color32(212, 50, 50, 255); // Цвет #D43232
-    private Color startColor = new Color32(237, 237, 237, 255); // Цвет #EDEDED
+    [SerializeField] private Color initialColor = new Color32(138, 16, 16, 255); // Цвет #8A1010
+    [SerializeField] private Color activeColor = new Color32(212, 50, 50, 255); // Цвет #D43232
+    [SerializeField] private Color startColor = new Color32(237, 237, 237, 255); // Цвет #EDEDED
 
     private CarController carController;
+
+    private Coroutine lightSequence;
+    private bool isPaused = false;
 
     void Start()
     {
@@ -29,7 +32,7 @@ public class RaceTrafficLight : MonoBehaviour
         InitializeLights();
 
         // Запуск корутины для управления светофором
-        StartCoroutine(TrafficLightSequence());
+        lightSequence = StartCoroutine(TrafficLightSequence());
     }
 
     void InitializeLights()
@@ -54,6 +57,9 @@ public class RaceTrafficLight : MonoBehaviour
         // Зажигаем красные огни
         for (int i = 0; i < 4; i++)
         {
+            if (isPaused)
+                yield break;
+
             for (int j = 0; j < 3; j++)
             {
                 lights[i][j].GetComponent<Image>().color = activeColor;
@@ -67,6 +73,9 @@ public class RaceTrafficLight : MonoBehaviour
         // Меняем цвет на #EDEDED на полсекунды и включаем машину
         for (int i = 0; i < 4; i++)
         {
+            if (isPaused)
+                yield break;
+
             for (int j = 0; j < 3; j++)
             {
                 lights[i][j].GetComponent<Image>().color = startColor;
@@ -81,6 +90,21 @@ public class RaceTrafficLight : MonoBehaviour
 
         // Деактивация светофора
         gameObject.SetActive(false);
+    }
+
+    public void PauseTrafficLight()
+    {
+        isPaused = true;
+        if (lightSequence != null)
+        {
+            StopCoroutine(lightSequence);
+        }
+    }
+
+    public void ResumeTrafficLight()
+    {
+        isPaused = false;
+        lightSequence = StartCoroutine(TrafficLightSequence());
     }
 
     public bool IsLightsOff()
