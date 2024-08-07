@@ -15,6 +15,12 @@ public class ControlLoss : MonoBehaviour
     private PathFollower pathFollower;
     public bool HasLostControl { get; private set; } = false; // Флаг для проверки потери контроля
 
+    public void Initialize(RaceWinLose _raceWinLose, CameraFollow _cameraFollow)
+    {
+        raceWinLose = _raceWinLose;
+        cameraFollow = _cameraFollow;
+    }
+
     private void Start()
     {
         carController = GetComponent<CarController>();

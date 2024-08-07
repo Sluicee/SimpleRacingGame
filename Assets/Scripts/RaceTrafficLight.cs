@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,16 +16,13 @@ public class RaceTrafficLight : MonoBehaviour
     [SerializeField] private Color activeColor = new Color32(212, 50, 50, 255); // Цвет #D43232
     [SerializeField] private Color startColor = new Color32(237, 237, 237, 255); // Цвет #EDEDED
 
-    private CarController carController;
+    public CarController carController;
 
     private Coroutine lightSequence;
     private bool isPaused = false;
 
     void Start()
     {
-        carController = FindObjectOfType<CarController>();
-        carController.enabled = false;
-
         // Рандомное время ожидания
         waitTime = Random.Range(minWaitTime, maxWaitTime);
 
@@ -33,6 +31,12 @@ public class RaceTrafficLight : MonoBehaviour
 
         // Запуск корутины для управления светофором
         lightSequence = StartCoroutine(TrafficLightSequence());
+    }
+
+    public void Initialize(CarController _carController)
+    {
+        carController = _carController;
+        carController.enabled = false;
     }
 
     void InitializeLights()

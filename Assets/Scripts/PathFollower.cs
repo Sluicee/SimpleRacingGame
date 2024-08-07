@@ -11,8 +11,14 @@ public class PathFollower : MonoBehaviour
     private List<Vector3> smoothedWaypoints;
     private int currentWaypointIndex = 0;
 
+    public void Initialize(WaypointGenerator _waypointGenerator)
+    {
+        waypointGenerator = _waypointGenerator;
+    }
+
     private void Start()
     {
+        controlLoss = GetComponent<ControlLoss>();
         if (waypointGenerator != null)
         {
             smoothedWaypoints = waypointGenerator.GetSmoothedWaypoints();

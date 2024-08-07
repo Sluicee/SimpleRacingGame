@@ -2,7 +2,7 @@
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private Transform target;       // Цель, за которой будет следовать камера (машина)
+    public Transform target;       // Цель, за которой будет следовать камера (машина)
     [SerializeField] private Vector3 offset;         // Смещение камеры относительно цели
     [SerializeField] private float followSpeed = 10f; // Скорость следования камеры
     [SerializeField] private float lookSpeed = 5f;    // Скорость поворота камеры

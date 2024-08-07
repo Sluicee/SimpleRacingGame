@@ -30,6 +30,13 @@ public class CarController : MonoBehaviour
     private bool lapEnded = false;        // Флаг окончания круга
 
     private bool isAccelerating = false;  // Флаг, указывающий, что кнопка ускорения зажата
+    public void Initialize(TextMeshProUGUI _speedText, TextMeshProUGUI _lapTimeText, RectTransform _speedIndicator, RaceWinLose _raceWinLose)
+    {
+        speedText = _speedText;
+        lapTimeText = _lapTimeText;
+        speedIndicator = _speedIndicator;
+        raceWinLose = _raceWinLose;
+    }
 
     void Start()
     {
