@@ -261,7 +261,12 @@ public class SelectionManager : MonoBehaviour
     {
         for (int i = 0; i < carDataList.Count; i++)
         {
-            carDataList[i].isUnlocked = PlayerPrefs.GetInt(UNLOCKED_CARS_KEY + i, 0) == 1;
+            int isUnlockedValue = PlayerPrefs.GetInt(UNLOCKED_CARS_KEY + i, -1);
+            if (isUnlockedValue != -1)
+            {
+                carDataList[i].isUnlocked = isUnlockedValue == 1;
+            }
         }
     }
+
 }
