@@ -1449,6 +1449,7 @@ MonoBehaviour:
   initialColor: {r: 0.5411765, g: 0.0627451, b: 0.0627451, a: 1}
   activeColor: {r: 0.83137256, g: 0.19607843, b: 0.19607843, a: 1}
   startColor: {r: 0.92941177, g: 0.92941177, b: 0.92941177, a: 1}
+  boostBtn: {fileID: 1923880887}
   carController: {fileID: 0}
 --- !u!114 &328864868
 MonoBehaviour:
@@ -9255,7 +9256,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1923880888}
   m_OnClick:
     m_PersistentCalls:

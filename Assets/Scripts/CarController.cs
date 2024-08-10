@@ -70,7 +70,6 @@ public class CarController : MonoBehaviour
         // Применение ускорения
         Vector3 forwardMovement = transform.forward * currentSpeed * Time.deltaTime;
         rb.MovePosition(rb.position + forwardMovement);
-
         // Управление бустом
         if (Input.GetKeyDown(KeyCode.Space) && !isBoosting && !hasBoosted)
         {
@@ -101,11 +100,14 @@ public class CarController : MonoBehaviour
 
     public void StartBoost()
     {
-        isBoosting = true;
-        currentAcceleration = acceleration * boostMultiplier; // Увеличиваем ускорение
-        boostEndTime = Time.time + boostDuration;
-        hasBoosted = true; // Устанавливаем флаг использования буста
-        Debug.Log("Boost activated.");
+        if (lapStarted)
+        {
+            isBoosting = true;
+            currentAcceleration = acceleration * boostMultiplier; // Увеличиваем ускорение
+            boostEndTime = Time.time + boostDuration;
+            hasBoosted = true; // Устанавливаем флаг использования буста
+            Debug.Log("Boost activated.");
+        }
     }
 
     private void EndBoost()

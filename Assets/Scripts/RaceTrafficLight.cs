@@ -16,6 +16,8 @@ public class RaceTrafficLight : MonoBehaviour
     [SerializeField] private Color activeColor = new Color32(212, 50, 50, 255); // Цвет #D43232
     [SerializeField] private Color startColor = new Color32(237, 237, 237, 255); // Цвет #EDEDED
 
+    [SerializeField] private Button boostBtn;
+
     public CarController carController;
 
     private Coroutine lightSequence;
@@ -88,6 +90,7 @@ public class RaceTrafficLight : MonoBehaviour
 
         carController.enabled = true;
         carController.StartLap();
+        boostBtn.interactable = true;
         LightsOff = true;
 
         yield return new WaitForSeconds(0.5f);
