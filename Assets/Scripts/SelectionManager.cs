@@ -46,6 +46,8 @@ public class SelectionManager : MonoBehaviour
 
     private const string UNLOCKED_CARS_KEY = "UnlockedCars"; // Ключ для хранения статусов разблокировки машин в PlayerPrefs
 
+    public static Sprite SelectedCarImage; // Статическое поле для хранения изображения
+
     private void Start()
     {
         // Проверяем, что списки не пустые
@@ -229,6 +231,11 @@ public class SelectionManager : MonoBehaviour
         }
     }
 
+    public Sprite GetSelectedCarImage()
+    {
+        return carDataList[selectedCarIndex].carImage; // Возвращаем изображение выбранной машины
+    }
+
     private void StartRace()
     {
         var selectedCar = carDataList[selectedCarIndex];
@@ -237,6 +244,9 @@ public class SelectionManager : MonoBehaviour
             Debug.Log("This car is locked. Please purchase it first.");
             return;
         }
+
+        // Сохранение изображения выбранной машины в статическое поле
+        SelectedCarImage = selectedCar.carImage;
 
         // Сохраняем выбранные значения в GameData
         GameData.SelectedCarName = selectedCar.carPrefab.name;
