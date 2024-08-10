@@ -11,18 +11,6 @@ public class CameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isInCollisionMode)
-        {
-            // Рассчитываем желаемую позицию камеры с учетом смещения
-            Vector3 desiredPosition = target.position + target.TransformVector(offset);
-
-            // Плавное следование камеры за машиной
-            transform.position = Vector3.Lerp(transform.position, desiredPosition, followSpeed * Time.deltaTime);
-        }
-    }
-
-    private void LateUpdate()
-    {
         if (isInCollisionMode)
         {
             // Поворот камеры, чтобы она всегда смотрела на цель
@@ -32,6 +20,12 @@ public class CameraFollow : MonoBehaviour
         }
         else
         {
+            // Рассчитываем желаемую позицию камеры с учетом смещения
+            Vector3 desiredPosition = target.position + target.TransformVector(offset);
+
+            // Плавное следование камеры за машиной
+            transform.position = Vector3.Lerp(transform.position, desiredPosition, followSpeed * Time.deltaTime);
+
             // Рассчитываем направление, в котором должна смотреть камера
             Vector3 targetForward = target.forward;
             Vector3 directionToTarget = target.position - transform.position;

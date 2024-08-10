@@ -2,7 +2,7 @@
 
 public class LapTrigger : MonoBehaviour
 {
-    [SerializeField] private CarController carController; // Ссылка на CarController
+    public CarController carController; // Ссылка на CarController
     [SerializeField] private RaceTrafficLight raceTrafficLight; // Ссылка на CarController
 
     private void OnTriggerEnter(Collider other)

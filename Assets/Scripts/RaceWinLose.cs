@@ -12,9 +12,11 @@ public class RaceWinLose : MonoBehaviour
 
     [SerializeField] private TMP_Text winTimeText; // TextMeshPro для отображения времени на экране победы
 
-    [SerializeField] private CarController carController;
+    public CarController carController;
 
     [SerializeField] private List<TMP_Text> mapNameTexts;
+
+    [SerializeField] private int award;
 
     private void Start()
     {
@@ -24,13 +26,14 @@ public class RaceWinLose : MonoBehaviour
         UpdateSceneNameTexts();
     }
 
-    public void ShowWinScreen(float lapTime)
+    public async void ShowWinScreen(float lapTime)
     {
         winMenu.SetActive(true); // Показываем экран победы
         winTimeText.text = FormatTime(lapTime); // Отображаем время
         gameUI.SetActive(false); // Отключаем UI игры
         telemetryUI.SetActive(false); // Отключаем UI телеметрии
         carController.Stop();
+        CurrencyManager.Instance.AddCurrency(award);
     }
 
     public void ShowLoseScreen()
