@@ -2903,6 +2903,8 @@ MonoBehaviour:
   trackDataList:
   - trackSceneName: Tempesta Circuit
     trackImage: {fileID: 21300000, guid: 69ac2ec4a15b10d4cae53f58b49a8e7e, type: 3}
+  - trackSceneName: Thunderbolt Oval
+    trackImage: {fileID: 21300000, guid: 16ad2ffd6ecf4a54585cf5a69d10a141, type: 3}
   trackImage: {fileID: 593043469}
   trackNameText: {fileID: 1529918850}
   nextTrackButton: {fileID: 637192835}

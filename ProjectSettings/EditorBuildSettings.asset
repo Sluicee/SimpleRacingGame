@@ -8,12 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 90962ee62c581d347b04f5966bea6478
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test Track.unity
     guid: c850ee8c3b14cc8459e7e186857cf567
   - enabled: 1
     path: Assets/Scenes/Tempesta Circuit.unity
     guid: 7cb0a457bfc98244abd733c5f8a98930
+  - enabled: 1
+    path: Assets/Scenes/Thunderbolt Oval.unity
+    guid: c63c6249b7c333c46a700f162018211a
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 56669a2d216e79248b3de528633c52bb,
       type: 2}
