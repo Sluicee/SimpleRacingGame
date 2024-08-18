@@ -6,6 +6,11 @@ public class PathFollower : MonoBehaviour
     [SerializeField] private WaypointGenerator waypointGenerator;
     [SerializeField] private float reachThreshold = 0.1f; // Радиус, в котором точка считается достигнутой
     [SerializeField] private float rotationSpeed = 5f; // Скорость поворота
+    [SerializeField] private float wheelTurnSpeed = 2f; // Скорость поворота колес
+    [SerializeField] private Transform frontLeftWheel; // Переднее левое колесо
+    [SerializeField] private Transform frontRightWheel; // Переднее правое колесо
+    [SerializeField] private float maxWheelAngle = 30f; // Максимальный угол поворота колес
+    [SerializeField] private float predictionDistance = 3f; // Расстояние для предсказания точки поворота
     [SerializeField] private ControlLoss controlLoss; // Ссылка на скрипт ControlLoss
 
     private List<Vector3> smoothedWaypoints;
@@ -46,6 +51,10 @@ public class PathFollower : MonoBehaviour
             Vector3 targetWaypoint = smoothedWaypoints[currentWaypointIndex];
             Vector3 direction = targetWaypoint - transform.position;
 
+            // Предсказание точки для поворота колес
+            Vector3 targetWheelWaypoint = targetWaypoint + direction.normalized * predictionDistance;
+            Vector3 wheelDirection = targetWheelWaypoint - transform.position;
+
             // Проверка достижения путевой точки
             if (Vector3.Distance(transform.position, targetWaypoint) < reachThreshold)
             {
@@ -58,6 +67,17 @@ public class PathFollower : MonoBehaviour
                 Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
                 transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
             }
+
+            // Рассчитываем угол поворота передних колес
+            float angle = Vector3.SignedAngle(transform.forward, wheelDirection, Vector3.up);
+            float targetWheelAngle = Mathf.Clamp(angle, -maxWheelAngle, maxWheelAngle);
+
+            // Используем Mathf.Lerp для плавного изменения угла
+            float wheelAngle = Mathf.LerpAngle(0, targetWheelAngle, wheelTurnSpeed * Time.deltaTime);
+
+            // Применяем угол поворота к передним колесам с учетом их начальной ориентации
+            frontLeftWheel.localRotation = Quaternion.Euler(-90, wheelAngle - 90, 0);
+            frontRightWheel.localRotation = Quaternion.Euler(-90, wheelAngle - 90, 0);
         }
     }
 }

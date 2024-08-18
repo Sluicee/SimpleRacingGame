@@ -9,6 +9,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private float brakeAcceleration = 10f; // Тормозное ускорение
     [SerializeField] private float boostMultiplier = 2f;    // Множитель ускорения при бусте
     [SerializeField] private float boostDuration = 5f;      // Длительность буста
+    [SerializeField] private float decelerationRate = 2f;    // Скорость уменьшения максимальной скорости после буста
 
     [SerializeField] private TextMeshProUGUI speedText;     // Ссылка на TextMeshPro текст для отображения скорости
     [SerializeField] private TextMeshProUGUI lapTimeText;   // Ссылка на TextMeshPro текст для отображения времени круга
@@ -29,9 +30,11 @@ public class CarController : MonoBehaviour
     private bool lapStarted = false;      // Флаг начала круга
     private bool lapEnded = false;        // Флаг окончания круга
 
-    private float tempMaxSpeed;
+    private float tempMaxSpeed;           // Храним начальное значение максимальной скорости
+    private float targetMaxSpeed;         // Целевая максимальная скорость при плавном снижении
+    private bool isDecelerating = false;  // Флаг, указывающий на процесс плавного снижения скорости
+    private bool isAccelerating = false;
 
-    private bool isAccelerating = false;  // Флаг, указывающий, что кнопка ускорения зажата
     public void Initialize(TextMeshProUGUI _speedText, TextMeshProUGUI _lapTimeText, RectTransform _speedIndicator, RaceWinLose _raceWinLose)
     {
         speedText = _speedText;
@@ -46,7 +49,7 @@ public class CarController : MonoBehaviour
         currentAcceleration = acceleration; // Устанавливаем текущее ускорение в начальное значение
         lapTimeText.text = "00'00' '000"; // Инициализируем текст времени круга
 
-        tempMaxSpeed = maxSpeed;
+        tempMaxSpeed = maxSpeed;  // Сохраняем начальное значение максимальной скорости
 
         // Установка начального значения для speedIndicator
         if (speedIndicator != null)
@@ -74,6 +77,7 @@ public class CarController : MonoBehaviour
         // Применение ускорения
         Vector3 forwardMovement = transform.forward * currentSpeed * Time.deltaTime;
         rb.MovePosition(rb.position + forwardMovement);
+
         // Управление бустом
         if (Input.GetKeyDown(KeyCode.Space) && !isBoosting && !hasBoosted)
         {
@@ -83,6 +87,18 @@ public class CarController : MonoBehaviour
         if (isBoosting && Time.time > boostEndTime)
         {
             EndBoost();
+        }
+
+        if (!isBoosting && isDecelerating)
+        {
+            // Плавное снижение максимальной скорости после окончания буста
+            maxSpeed = Mathf.Lerp(maxSpeed, targetMaxSpeed, decelerationRate * Time.deltaTime);
+
+            if (Mathf.Abs(maxSpeed - targetMaxSpeed) < 0.01f)
+            {
+                maxSpeed = targetMaxSpeed;
+                isDecelerating = false;
+            }
         }
 
         // Обновление TextMeshPro текста с текущей скоростью
@@ -110,7 +126,9 @@ public class CarController : MonoBehaviour
             currentAcceleration = acceleration * boostMultiplier; // Увеличиваем ускорение
             boostEndTime = Time.time + boostDuration;
             hasBoosted = true; // Устанавливаем флаг использования буста
-            maxSpeed *= 2;
+            targetMaxSpeed = maxSpeed;  // Сохраняем текущую максимальную скорость как цель
+            maxSpeed *= 2; // Увеличиваем максимальную скорость вдвое
+            isDecelerating = false; // Сбрасываем флаг, если буст активен
             Debug.Log("Boost activated.");
         }
     }
@@ -119,7 +137,8 @@ public class CarController : MonoBehaviour
     {
         isBoosting = false;
         currentAcceleration = acceleration; // Возвращаемся к нормальному ускорению
-        maxSpeed = tempMaxSpeed;
+        targetMaxSpeed = tempMaxSpeed; // Устанавливаем цель для максимальной скорости
+        isDecelerating = true; // Запускаем процесс плавного снижения скорости
         Debug.Log("Boost ended.");
     }
 
