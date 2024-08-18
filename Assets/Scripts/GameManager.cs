@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
         // Загружаем префаб машины из папки Resources/Cars
         GameObject carPrefab = Resources.Load<GameObject>($"Cars/{selectedCarName}");
 
+        Time.timeScale = 1;
+
         if (carPrefab != null)
         {
             // Создаем экземпляр машины на точке спавна
