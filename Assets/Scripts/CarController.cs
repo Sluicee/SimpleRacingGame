@@ -29,6 +29,8 @@ public class CarController : MonoBehaviour
     private bool lapStarted = false;      // Флаг начала круга
     private bool lapEnded = false;        // Флаг окончания круга
 
+    private float tempMaxSpeed;
+
     private bool isAccelerating = false;  // Флаг, указывающий, что кнопка ускорения зажата
     public void Initialize(TextMeshProUGUI _speedText, TextMeshProUGUI _lapTimeText, RectTransform _speedIndicator, RaceWinLose _raceWinLose)
     {
@@ -43,6 +45,8 @@ public class CarController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         currentAcceleration = acceleration; // Устанавливаем текущее ускорение в начальное значение
         lapTimeText.text = "00'00' '000"; // Инициализируем текст времени круга
+
+        tempMaxSpeed = maxSpeed;
 
         // Установка начального значения для speedIndicator
         if (speedIndicator != null)
@@ -106,6 +110,7 @@ public class CarController : MonoBehaviour
             currentAcceleration = acceleration * boostMultiplier; // Увеличиваем ускорение
             boostEndTime = Time.time + boostDuration;
             hasBoosted = true; // Устанавливаем флаг использования буста
+            maxSpeed *= 2;
             Debug.Log("Boost activated.");
         }
     }
@@ -114,6 +119,7 @@ public class CarController : MonoBehaviour
     {
         isBoosting = false;
         currentAcceleration = acceleration; // Возвращаемся к нормальному ускорению
+        maxSpeed = tempMaxSpeed;
         Debug.Log("Boost ended.");
     }
 

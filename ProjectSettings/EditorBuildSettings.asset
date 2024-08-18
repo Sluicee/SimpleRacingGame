@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test Track.unity
     guid: c850ee8c3b14cc8459e7e186857cf567
+  - enabled: 1
+    path: Assets/Scenes/Tempesta Circuit.unity
+    guid: 7cb0a457bfc98244abd733c5f8a98930
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 56669a2d216e79248b3de528633c52bb,
       type: 2}

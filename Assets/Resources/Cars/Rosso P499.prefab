@@ -136,7 +136,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b902c72a754938a4c88f285537985957,
         type: 3}
       propertyPath: m_Name
-      value: 499P
+      value: Rosso P499
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b902c72a754938a4c88f285537985957,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3316992658331686828, guid: b902c72a754938a4c88f285537985957,
         type: 3}
