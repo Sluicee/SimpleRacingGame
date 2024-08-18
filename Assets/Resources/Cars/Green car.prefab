@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlLossTag: ControlLossArea
-  baseSpinImpulse: 1000
+  baseSpinImpulse: 15000
   bounceForce: 15000
   spinDamping: 1
   cameraFollow: {fileID: 0}
