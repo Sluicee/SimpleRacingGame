@@ -8,127 +8,136 @@ using System.Collections;
 public class SelectionManager : MonoBehaviour
 {
     [Header("Car Selection")]
-    [SerializeField] private List<CarData> carDataList; // Список данных о машинах
-
-    [SerializeField] private Image carImage; // Изображение для отображения текущей выбранной машины
-    [SerializeField] private TMP_Text carNameText; // Текст для отображения названия машины
+    [SerializeField] private List<CarData> carDataList;
+    [SerializeField] private Image carImage;
+    [SerializeField] private TMP_Text carNameText;
 
     [Header("Car Parameters Display")]
-    [SerializeField] private Image speedIndicator; // Изображение для отображения скорости
-    [SerializeField] private Image handlingIndicator; // Изображение для отображения управляемости
-    [SerializeField] private Image powerIndicator; // Изображение для отображения мощности
+    [SerializeField] private Image speedIndicator;
+    [SerializeField] private Image handlingIndicator;
+    [SerializeField] private Image powerIndicator;
 
-    [SerializeField] private Button nextCarButton; // Кнопка для выбора следующей машины
-    [SerializeField] private Button previousCarButton; // Кнопка для выбора предыдущей машины
+    [SerializeField] private Button nextCarButton;
+    [SerializeField] private Button previousCarButton;
 
     [Header("Track Selection")]
-    [SerializeField] private List<TrackData> trackDataList; // Список данных о треках
-
-    [SerializeField] private Image trackImage; // Изображение для отображения текущей выбранной трассы
-    [SerializeField] private TMP_Text trackNameText; // Текст для отображения названия трассы
-    [SerializeField] private Button nextTrackButton; // Кнопка для выбора следующей трассы
-    [SerializeField] private Button previousTrackButton; // Кнопка для выбора предыдущей трассы
+    [SerializeField] private List<TrackData> trackDataList;
+    [SerializeField] private Image trackImage;
+    [SerializeField] private TMP_Text trackNameText;
+    [SerializeField] private Button nextTrackButton;
+    [SerializeField] private Button previousTrackButton;
 
     [Header("Car Unlocking")]
-    [SerializeField] private Button purchaseButton; // Кнопка для покупки машины
-    [SerializeField] private TMP_Text priceText; // Текст на кнопке покупки
-    [SerializeField] private GameObject lockOverlay; // Замок или затемненное изображение для отображения блокировки
+    [SerializeField] private Button purchaseButton;
+    [SerializeField] private TMP_Text priceText;
+    [SerializeField] private GameObject lockOverlay;
 
     [Header("Buttons")]
-    [SerializeField] private Button startRaceButton; // Кнопка для начала гонки
+    [SerializeField] private Button startRaceButton;
 
     [Header("Animation Settings")]
-    [SerializeField] private float animationDuration = 0.5f; // Длительность анимации
+    [SerializeField] private float animationDuration = 0.5f;
 
-    private int selectedCarIndex = 0;
-    private int selectedTrackIndex = 0;
-    private bool isCarChanging = false; // Флаг для контроля анимации смены машины
+    private int selectedCarIndex;
+    private int selectedTrackIndex;
+    private bool isCarChanging = false;
+    private bool isTrackChanging = false;
 
-    private const string UNLOCKED_CARS_KEY = "UnlockedCars"; // Ключ для хранения статусов разблокировки машин в PlayerPrefs
+    private const string UNLOCKED_CARS_KEY = "UnlockedCars";
+    private const string SELECTED_CAR_KEY = "SelectedCarIndex";
+    private const string SELECTED_TRACK_KEY = "SelectedTrackIndex";
 
-    public static Sprite SelectedCarImage; // Статическое поле для хранения изображения
+    public static Sprite SelectedCarImage;
 
     private void Start()
     {
-        // Проверяем, что списки не пустые
         if (carDataList.Count == 0 || trackDataList.Count == 0)
         {
-            Debug.LogError("One or more lists are empty. Please assign the lists in the inspector.");
             return;
         }
 
-        // Загрузка сохраненных данных
         LoadCarData();
+        LoadTrackData();
 
-        // Инициализация отображения
         UpdateCarSelection();
         UpdateTrackSelection();
 
-        // Подключаем обработчики событий
         nextCarButton.onClick.AddListener(NextCar);
         previousCarButton.onClick.AddListener(PreviousCar);
         nextTrackButton.onClick.AddListener(NextTrack);
         previousTrackButton.onClick.AddListener(PreviousTrack);
         startRaceButton.onClick.AddListener(StartRace);
         purchaseButton.onClick.AddListener(PurchaseCar);
+
+        Time.timeScale = 1.0f;
     }
 
     private void NextCar()
     {
+        if (isCarChanging) return;
+
         selectedCarIndex = (selectedCarIndex + 1) % carDataList.Count;
-        if (!isCarChanging) // Проверяем флаг, чтобы предотвратить повторный вызов
-        {
-            StartCoroutine(SmoothCarChange());
-        }
-        else
-        {
-            UpdateCarSelection(); // Обновляем выбор машины без анимации
-        }
+        StartCoroutine(SmoothCarChange());
+        SaveCarData();
     }
 
     private void PreviousCar()
     {
+        if (isCarChanging) return;
+
         selectedCarIndex = (selectedCarIndex - 1 + carDataList.Count) % carDataList.Count;
-        if (!isCarChanging) // Проверяем флаг, чтобы предотвратить повторный вызов
-        {
-            StartCoroutine(SmoothCarChange());
-        }
-        else
-        {
-            UpdateCarSelection(); // Обновляем выбор машины без анимации
-        }
+        StartCoroutine(SmoothCarChange());
+        SaveCarData();
     }
 
     private void NextTrack()
     {
+        if (isTrackChanging) return;
+
         selectedTrackIndex = (selectedTrackIndex + 1) % trackDataList.Count;
         StartCoroutine(SmoothTrackChange());
+        SaveTrackData();
     }
 
     private void PreviousTrack()
     {
+        if (isTrackChanging) return;
+
         selectedTrackIndex = (selectedTrackIndex - 1 + trackDataList.Count) % trackDataList.Count;
         StartCoroutine(SmoothTrackChange());
+        SaveTrackData();
     }
 
     private IEnumerator SmoothCarChange()
     {
-        isCarChanging = true; // Устанавливаем флаг, что анимация происходит
-        yield return StartCoroutine(FadeOut(carImage, animationDuration)); // Плавное исчезновение старого изображения
-        UpdateCarSelection(); // Обновляем выбор машины
-        yield return StartCoroutine(FadeIn(carImage, animationDuration)); // Плавное появление нового изображения
-        isCarChanging = false; // Сбрасываем флаг после завершения анимации
+        if (carImage == null) yield break;
+
+        isCarChanging = true;
+
+        yield return StartCoroutine(FadeOut(carImage, animationDuration));
+        UpdateCarSelection();
+        yield return StartCoroutine(FadeIn(carImage, animationDuration));
+
+        isCarChanging = false;
     }
 
     private IEnumerator SmoothTrackChange()
     {
-        yield return StartCoroutine(FadeOut(trackImage, animationDuration)); // Плавное исчезновение старого изображения
-        UpdateTrackSelection(); // Обновляем выбор трассы
-        yield return StartCoroutine(FadeIn(trackImage, animationDuration)); // Плавное появление нового изображения
+        if (trackImage == null) yield break;
+
+        isTrackChanging = true;
+
+        yield return StartCoroutine(FadeOut(trackImage, animationDuration));
+        UpdateTrackSelection();
+        yield return StartCoroutine(FadeIn(trackImage, animationDuration));
+
+        isTrackChanging = false;
     }
 
     private IEnumerator FadeOut(Image image, float duration)
     {
+        if (image == null) yield break;
+
         float elapsedTime = 0f;
         Color startColor = image.color;
         Color endColor = new Color(startColor.r, startColor.g, startColor.b, 0f);
@@ -145,6 +154,8 @@ public class SelectionManager : MonoBehaviour
 
     private IEnumerator FadeIn(Image image, float duration)
     {
+        if (image == null) yield break;
+
         float elapsedTime = 0f;
         Color startColor = new Color(image.color.r, image.color.g, image.color.b, 0f);
         Color endColor = new Color(image.color.r, image.color.g, image.color.b, 1f);
@@ -161,50 +172,44 @@ public class SelectionManager : MonoBehaviour
 
     private void UpdateCarSelection()
     {
+        if (carDataList.Count == 0) return;
+
         var selectedCar = carDataList[selectedCarIndex];
+        if (carImage.sprite == selectedCar.carImage && carNameText.text == selectedCar.carPrefab.name) return;
+
         carImage.sprite = selectedCar.carImage;
         carNameText.text = selectedCar.carPrefab.name;
 
-        // Обновляем индикаторы
         UpdateIndicator(speedIndicator, selectedCar.carSpeed);
         UpdateIndicator(handlingIndicator, selectedCar.carHandling);
         UpdateIndicator(powerIndicator, selectedCar.carPower);
 
-        // Проверка, разблокирована ли машина
-        if (selectedCar.isUnlocked)
-        {
-            purchaseButton.gameObject.SetActive(false); // Скрываем кнопку покупки
-            startRaceButton.gameObject.SetActive(true);
-            lockOverlay.SetActive(false); // Скрываем замок
-        }
-        else
-        {
-            purchaseButton.gameObject.SetActive(true); // Показываем кнопку покупки
-            startRaceButton.gameObject.SetActive(false);
-            priceText.text = selectedCar.carPrice.ToString(); // Отображаем цену
-            lockOverlay.SetActive(true); // Показываем замок
-            carImage.sprite = selectedCar.carLockImage;
-        }
+        purchaseButton.gameObject.SetActive(!selectedCar.isUnlocked);
+        startRaceButton.gameObject.SetActive(selectedCar.isUnlocked);
+        lockOverlay.SetActive(!selectedCar.isUnlocked);
+        priceText.text = selectedCar.isUnlocked ? string.Empty : selectedCar.carPrice.ToString();
+        if (!selectedCar.isUnlocked) carImage.sprite = selectedCar.carLockImage;
     }
 
     private void UpdateTrackSelection()
     {
+        if (trackDataList.Count == 0) return;
+
         var selectedTrack = trackDataList[selectedTrackIndex];
+        if (trackImage.sprite == selectedTrack.trackImage && trackNameText.text == selectedTrack.trackSceneName) return;
+
         trackImage.sprite = selectedTrack.trackImage;
         trackNameText.text = selectedTrack.trackSceneName;
     }
 
     private void UpdateIndicator(Image indicator, float value)
     {
-        // Максимальное значение для нормализации
         float maxValue = 100f;
-
-        // Пропорционально изменяем ширину изображения
         RectTransform rectTransform = indicator.GetComponent<RectTransform>();
         if (rectTransform != null)
         {
             float normalizedValue = Mathf.Clamp01(value / maxValue);
-            rectTransform.sizeDelta = new Vector2(normalizedValue * 100, rectTransform.sizeDelta.y); // 100 - максимальная ширина индикатора
+            rectTransform.sizeDelta = new Vector2(normalizedValue * 100, rectTransform.sizeDelta.y);
         }
     }
 
@@ -213,62 +218,50 @@ public class SelectionManager : MonoBehaviour
         var selectedCar = carDataList[selectedCarIndex];
         int carPrice = selectedCar.carPrice;
 
-        // Проверяем, есть ли у игрока достаточно валюты для покупки
         if (CurrencyManager.Instance.GetCurrency() >= carPrice)
         {
-            CurrencyManager.Instance.SpendCurrency(carPrice); // Списываем валюту
-            selectedCar.isUnlocked = true; // Разблокируем машину
-            SaveCarData(); // Сохраняем статус купленных машин
-            UpdateCarSelection(); // Обновляем интерфейс
-            if (!isCarChanging) // Если анимация не происходит
+            CurrencyManager.Instance.SpendCurrency(carPrice);
+            selectedCar.isUnlocked = true;
+            SaveCarData();
+            UpdateCarSelection();
+            if (!isCarChanging)
             {
-                StartCoroutine(SmoothCarChange()); // Запускаем плавное изменение изображения после разблокировки
+                StartCoroutine(SmoothCarChange());
             }
-        }
-        else
-        {
-            Debug.Log("Not enough currency to purchase this car.");
         }
     }
 
     public Sprite GetSelectedCarImage()
     {
-        return carDataList[selectedCarIndex].carImage; // Возвращаем изображение выбранной машины
+        return carDataList[selectedCarIndex].carImage;
     }
 
     private void StartRace()
     {
         var selectedCar = carDataList[selectedCarIndex];
-        if (!selectedCar.isUnlocked)
-        {
-            Debug.Log("This car is locked. Please purchase it first.");
-            return;
-        }
+        if (!selectedCar.isUnlocked) return;
 
-        // Сохранение изображения выбранной машины в статическое поле
         SelectedCarImage = selectedCar.carImage;
 
-        // Сохраняем выбранные значения в GameData
         GameData.SelectedCarName = selectedCar.carPrefab.name;
         GameData.SelectedTrack = trackDataList[selectedTrackIndex].trackSceneName;
 
-        // Загружаем выбранную трассу
         SceneManager.LoadScene(trackDataList[selectedTrackIndex].trackSceneName);
     }
 
-    // Сохранение данных о купленных машинах
     private void SaveCarData()
     {
         for (int i = 0; i < carDataList.Count; i++)
         {
             PlayerPrefs.SetInt(UNLOCKED_CARS_KEY + i, carDataList[i].isUnlocked ? 1 : 0);
         }
+        PlayerPrefs.SetInt(SELECTED_CAR_KEY, selectedCarIndex);
         PlayerPrefs.Save();
     }
 
-    // Загрузка данных о купленных машинах
     private void LoadCarData()
     {
+        selectedCarIndex = PlayerPrefs.GetInt(SELECTED_CAR_KEY, 0);
         for (int i = 0; i < carDataList.Count; i++)
         {
             int isUnlockedValue = PlayerPrefs.GetInt(UNLOCKED_CARS_KEY + i, -1);
@@ -277,6 +270,18 @@ public class SelectionManager : MonoBehaviour
                 carDataList[i].isUnlocked = isUnlockedValue == 1;
             }
         }
+        UpdateCarSelection();
     }
 
+    private void SaveTrackData()
+    {
+        PlayerPrefs.SetInt(SELECTED_TRACK_KEY, selectedTrackIndex);
+        PlayerPrefs.Save();
+    }
+
+    private void LoadTrackData()
+    {
+        selectedTrackIndex = PlayerPrefs.GetInt(SELECTED_TRACK_KEY, 0);
+        UpdateTrackSelection();
+    }
 }
