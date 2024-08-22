@@ -193,6 +193,11 @@ public class CarController : MonoBehaviour
         }
     }
 
+    public void SetBrakeAcceleration(float value)
+    {
+        brakeAcceleration = value;
+    }
+
     // Свойства для проверки состояния круга
     public bool LapStarted
     {

@@ -21,6 +21,18 @@ public class RaceWinLose : MonoBehaviour
 
     [SerializeField] private int award;
 
+    [Header ("Record info")]
+
+    [SerializeField] private TextMeshProUGUI recordTimeText; // Текст для отображения рекордного времени
+    [SerializeField] private TextMeshProUGUI timeDifferenceText; // Текст для отображения разницы во времени
+    [SerializeField] private GameObject newRecordText; // Текст "Новый рекрод"
+    [SerializeField] private GameObject prevRecordText; // Текст "Прошлый рекрод"
+
+    [SerializeField] private Color fasterTimeColor = Color.green; // Цвет, если время быстрее рекорда
+    [SerializeField] private Color slowerTimeColor = Color.red;   // Цвет, если время медленнее рекорда
+
+    private string trackName;  // Имя текущей трассы (уникальное)
+
     private void Start()
     {
         // Убедитесь, что меню не активно при запуске
@@ -28,6 +40,8 @@ public class RaceWinLose : MonoBehaviour
         loseMenu.SetActive(false);
         UpdateSceneNameTexts();
         SetCarImage();
+        trackName = SceneManager.GetActiveScene().name; // Установите имя трассы здесь или передавайте его в скрипт
+        LoadRecordTime();
     }
 
     public void ShowWinScreen(float lapTime)
@@ -36,6 +50,25 @@ public class RaceWinLose : MonoBehaviour
         winTimeText.text = FormatTime(lapTime); // Отображаем время
         gameUI.SetActive(false); // Отключаем UI игры
         telemetryUI.SetActive(false); // Отключаем UI телеметрии
+
+        float recordTime = GetRecordTime();
+
+        // Проверяем, если время круга лучше, чем рекорд
+        if (lapTime < recordTime)
+        {
+            SaveRecordTime(lapTime);
+            newRecordText.SetActive(true);
+            Debug.Log("New record! Time: " + FormatTime(lapTime));
+        }
+        else
+        {
+            newRecordText.SetActive(false);
+            Debug.Log("Your time: " + FormatTime(lapTime));
+        }
+
+        UpdateTimeDifferenceText(lapTime, recordTime);
+
+        carController.SetBrakeAcceleration(100f);
         carController.Stop();
         CurrencyManager.Instance.AddCurrency(award);
     }
@@ -68,6 +101,63 @@ public class RaceWinLose : MonoBehaviour
             {
                 item.sprite = SelectionManager.SelectedCarImage;
             }
+        }
+    }
+
+    private float GetRecordTime()
+    {
+        // Загрузка рекордного времени для текущей трассы
+        return PlayerPrefs.GetFloat(trackName + "_RecordTime", Mathf.Infinity);
+    }
+
+    private void SaveRecordTime(float newRecord)
+    {
+        // Сохранение нового рекордного времени для текущей трассы
+        PlayerPrefs.SetFloat(trackName + "_RecordTime", newRecord);
+        PlayerPrefs.Save();
+    }
+
+    private void LoadRecordTime()
+    {
+        // Загрузка и отображение рекордного времени
+        float recordTime = GetRecordTime();
+        if (recordTime != Mathf.Infinity)
+        {
+            recordTimeText.text = FormatTime(recordTime);
+            prevRecordText.SetActive(true);
+        }
+        else
+        {
+            recordTimeText.text = "";
+            prevRecordText.SetActive(false);
+            Debug.Log("No record time set yet.");
+        }
+    }
+
+    private void UpdateTimeDifferenceText(float lapTime, float recordTime)
+    {
+        // Вычисляем разницу во времени
+        if (recordTime != Mathf.Infinity)
+        {
+            float timeDifference = lapTime - recordTime;
+            string formattedDifference = FormatTime(Mathf.Abs(timeDifference));
+
+            // Меняем текст и цвет в зависимости от того, лучше ли текущее время рекорда
+            if (timeDifference < 0)
+            {
+                timeDifferenceText.color = fasterTimeColor;
+                timeDifferenceText.text = "-" + formattedDifference; // Время лучше
+            }
+            else
+            {
+                timeDifferenceText.color = slowerTimeColor;
+                timeDifferenceText.text = "+" + formattedDifference; // Время хуже
+            }
+        }
+        else
+        {
+            // Если рекорда нет, не отображаем разницу
+            timeDifferenceText.text = "";
         }
     }
 
