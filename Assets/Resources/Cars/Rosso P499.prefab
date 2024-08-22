@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 930554797014478499}
   - component: {fileID: 6726999627683628532}
   - component: {fileID: 5684845343355823604}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 9140926385561412414}
   - component: {fileID: 7537266577450680650}
   - component: {fileID: 4688869730696859600}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 4272856206081911023}
   - component: {fileID: 501179408671545019}
   - component: {fileID: 1508054829134757634}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rosso P499
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -224,10 +224,14 @@ MonoBehaviour:
   brakeAcceleration: 10
   boostMultiplier: 3
   boostDuration: 5.5
+  boostEffectSpeed: 12
+  decelerationRate: 2
   speedText: {fileID: 0}
   lapTimeText: {fileID: 0}
   speedIndicator: {fileID: 0}
   raceWinLose: {fileID: 0}
+  cameraFollow: {fileID: 0}
+  speedEffectMaterial: {fileID: 2100000, guid: 0a9f261fe4ec0384ca731b332ed3ad6a, type: 2}
   currentSpeed: 0
 --- !u!114 &2366563986373563072
 MonoBehaviour:
@@ -341,7 +345,7 @@ GameObject:
   - component: {fileID: 1232493678839547265}
   - component: {fileID: 7559261086184649503}
   - component: {fileID: 2153263796819619776}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +428,7 @@ GameObject:
   - component: {fileID: 9179009920287730654}
   - component: {fileID: 2010346920738318622}
   - component: {fileID: 4665815896509895093}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

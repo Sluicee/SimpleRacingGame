@@ -42,4 +42,14 @@ public class CameraFollow : MonoBehaviour
     {
         isInCollisionMode = isCollisionMode;
     }
+
+    public float GetFollowSpeed
+    {
+        get { return followSpeed; }
+    }
+
+    public void SetFollowSpeed(float value)
+    {
+        followSpeed = value;
+    }
 }

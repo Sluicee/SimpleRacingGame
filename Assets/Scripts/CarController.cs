@@ -9,6 +9,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private float brakeAcceleration = 10f; // Тормозное ускорение
     [SerializeField] private float boostMultiplier = 2f;    // Множитель ускорения при бусте
     [SerializeField] private float boostDuration = 5f;      // Длительность буста
+    [SerializeField] private float boostEffectSpeed = 5f;      // Длительность буста
     [SerializeField] private float decelerationRate = 2f;    // Скорость уменьшения максимальной скорости после буста
 
     [SerializeField] private TextMeshProUGUI speedText;     // Ссылка на TextMeshPro текст для отображения скорости
@@ -16,6 +17,12 @@ public class CarController : MonoBehaviour
     [SerializeField] private RectTransform speedIndicator;  // Ссылка на RectTransform для отображения текущей скорости
 
     [SerializeField] private RaceWinLose raceWinLose; // Ссылка на RaceWinLose
+
+    [SerializeField] private CameraFollow cameraFollow; // Ссылка на CameraFollow
+
+    [SerializeField] private GameObject boostEffect; // Ссылка на материал с шейдером
+
+    private float tempBoostEffectSpeed;
 
     public float currentSpeed = 0f;       // Текущая скорость машины
     private float currentAcceleration;    // Текущее ускорение машины
@@ -35,12 +42,14 @@ public class CarController : MonoBehaviour
     private bool isDecelerating = false;  // Флаг, указывающий на процесс плавного снижения скорости
     private bool isAccelerating = false;
 
-    public void Initialize(TextMeshProUGUI _speedText, TextMeshProUGUI _lapTimeText, RectTransform _speedIndicator, RaceWinLose _raceWinLose)
+    public void Initialize(TextMeshProUGUI _speedText, TextMeshProUGUI _lapTimeText, RectTransform _speedIndicator, RaceWinLose _raceWinLose, CameraFollow _cameraFollow, GameObject _boostEffect)
     {
         speedText = _speedText;
         lapTimeText = _lapTimeText;
         speedIndicator = _speedIndicator;
         raceWinLose = _raceWinLose;
+        cameraFollow = _cameraFollow;
+        boostEffect = _boostEffect;
     }
 
     void Start()
@@ -129,6 +138,9 @@ public class CarController : MonoBehaviour
             targetMaxSpeed = maxSpeed;  // Сохраняем текущую максимальную скорость как цель
             maxSpeed *= 2; // Увеличиваем максимальную скорость вдвое
             isDecelerating = false; // Сбрасываем флаг, если буст активен
+            tempBoostEffectSpeed = cameraFollow.GetFollowSpeed;
+            cameraFollow.SetFollowSpeed(boostEffectSpeed);
+            boostEffect.SetActive(true);
             Debug.Log("Boost activated.");
         }
     }
@@ -139,6 +151,8 @@ public class CarController : MonoBehaviour
         currentAcceleration = acceleration; // Возвращаемся к нормальному ускорению
         targetMaxSpeed = tempMaxSpeed; // Устанавливаем цель для максимальной скорости
         isDecelerating = true; // Запускаем процесс плавного снижения скорости
+        cameraFollow.SetFollowSpeed(tempBoostEffectSpeed);
+        boostEffect.SetActive(false);
         Debug.Log("Boost ended.");
     }
 

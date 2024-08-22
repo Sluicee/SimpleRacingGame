@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private RectTransform speedIndicator;  // Индикатор скорости
     [SerializeField] private RaceWinLose raceWinLose; // Система управления победой и поражением
     [SerializeField] private LapTrigger lapTrigger; // Триггер для засчёта кругов
+    [SerializeField] private GameObject boostEffect; // Триггер для засчёта кругов
 
     [Header("Path Follower init")]
     [SerializeField] private WaypointGenerator waypointGenerator; // Генератор путевых точек
@@ -52,7 +53,7 @@ public class GameManager : MonoBehaviour
             if (carController != null)
             {
                 // Инициализация контроллера машины с необходимыми ссылками на UI-элементы
-                carController.Initialize(speedText, lapTimeText, speedIndicator, raceWinLose);
+                carController.Initialize(speedText, lapTimeText, speedIndicator, raceWinLose, cameraFollow, boostEffect);
 
                 // Инициализация системы следования по пути
                 pathFollower.Initialize(waypointGenerator);
