@@ -179,10 +179,10 @@ GameObject:
   - component: {fileID: 2366563986373563072}
   - component: {fileID: 1109959699015261532}
   - component: {fileID: 4272856206081911023}
-  - component: {fileID: 501179408671545019}
   - component: {fileID: 8317230052694860364}
   - component: {fileID: 1508054829134757634}
   - component: {fileID: 8405206116401204203}
+  - component: {fileID: -8786383798477172936}
   m_Layer: 6
   m_Name: Rosso P499
   m_TagString: Player
@@ -252,8 +252,8 @@ MonoBehaviour:
   reachThreshold: 7
   rotationSpeed: 3.2
   wheelTurnSpeed: 30
-  frontLeftWheel: {fileID: 9179009920287730654}
-  frontRightWheel: {fileID: 9140926385561412414}
+  frontLeftWheel: {fileID: 0}
+  frontRightWheel: {fileID: 0}
   maxWheelAngle: 90
   predictionDistance: 5
   controlLoss: {fileID: 0}
@@ -302,20 +302,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &501179408671545019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480273696586578921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1734351db521db34eb15973d6bf10eb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wheels: []
-  wheelRadius: 0.5
 --- !u!114 &8317230052694860364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,6 +436,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8786383798477172936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2480273696586578921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1734351db521db34eb15973d6bf10eb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wheels: []
+  wheelRadius: 0.5
 --- !u!1 &2985268747669277547
 GameObject:
   m_ObjectHideFlags: 0

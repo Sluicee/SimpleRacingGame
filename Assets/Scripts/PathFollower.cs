@@ -68,6 +68,12 @@ public class PathFollower : MonoBehaviour
                 transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
             }
 
+            // Проверка наличия передних колес
+            if (frontLeftWheel == null || frontRightWheel == null)
+            {
+                return;
+            }
+
             // Рассчитываем угол поворота передних колес
             float angle = Vector3.SignedAngle(transform.forward, wheelDirection, Vector3.up);
             float targetWheelAngle = Mathf.Clamp(angle, -maxWheelAngle, maxWheelAngle);
