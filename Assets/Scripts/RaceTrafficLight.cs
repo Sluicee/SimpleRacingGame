@@ -38,7 +38,7 @@ public class RaceTrafficLight : MonoBehaviour
     public void Initialize(CarController _carController)
     {
         carController = _carController;
-        carController.enabled = false;
+        carController.SetCanMove(false);
     }
 
     void InitializeLights()
@@ -88,7 +88,7 @@ public class RaceTrafficLight : MonoBehaviour
             }
         }
 
-        carController.enabled = true;
+        carController.SetCanMove(true);
         carController.StartLap();
         boostBtn.interactable = true;
         LightsOff = true;

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 public class CarController : MonoBehaviour
 {
@@ -42,6 +43,15 @@ public class CarController : MonoBehaviour
     private bool isDecelerating = false;  // Флаг, указывающий на процесс плавного снижения скорости
     private bool isAccelerating = false;
 
+    public AudioSource engineSource;
+
+    public float fadeOutDuration { get; private set; } = 0.5f;
+    public float fadeInDuration { get; private set; } = 0.5f;
+
+    private float initialVolume; // Начальная громкость звука
+
+    private bool canMove = false; // New flag to control car movement
+
     public void Initialize(TextMeshProUGUI _speedText, TextMeshProUGUI _lapTimeText, RectTransform _speedIndicator, RaceWinLose _raceWinLose, CameraFollow _cameraFollow, GameObject _boostEffect)
     {
         speedText = _speedText;
@@ -60,6 +70,9 @@ public class CarController : MonoBehaviour
 
         tempMaxSpeed = maxSpeed;  // Сохраняем начальное значение максимальной скорости
 
+        // Сохраняем начальное значение громкости
+        initialVolume = engineSource.volume;
+
         // Установка начального значения для speedIndicator
         if (speedIndicator != null)
         {
@@ -71,7 +84,7 @@ public class CarController : MonoBehaviour
     void Update()
     {
         // Управление ускорением
-        if (isAccelerating)
+        if (isAccelerating && canMove)
         {
             currentSpeed += currentAcceleration * Time.deltaTime;
         }
@@ -88,7 +101,7 @@ public class CarController : MonoBehaviour
         rb.MovePosition(rb.position + forwardMovement);
 
         // Управление бустом
-        if (Input.GetKeyDown(KeyCode.Space) && !isBoosting && !hasBoosted)
+        if (Input.GetKeyDown(KeyCode.Space) && !isBoosting && !hasBoosted && canMove)
         {
             StartBoost();
         }
@@ -183,6 +196,55 @@ public class CarController : MonoBehaviour
         Debug.Log("Lap ended. Time: " + FormatTime(lapEndTime - lapStartTime));
     }
 
+    public void TurnOffEngine()
+    {
+        StartCoroutine(FadeOutCoroutine());
+    }
+
+    public void TurnOnEngine()
+    {
+        StartCoroutine(FadeInCoroutine());
+    }
+
+    private IEnumerator FadeOutCoroutine()
+    {
+        float startVolume = engineSource.volume;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < fadeOutDuration)
+        {
+            engineSource.volume = Mathf.Lerp(startVolume, 0f, elapsedTime / fadeOutDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        engineSource.volume = 0f;
+        engineSource.Stop(); // Останавливаем источник звука, когда громкость достигает нуля
+    }
+
+    private IEnumerator FadeInCoroutine()
+    {
+        float startVolume = engineSource.volume; // Начальная громкость при возобновлении игры
+        float targetVolume = initialVolume; // Конечная громкость, которую вы хотите достичь
+        float elapsedTime = 0f;
+
+        if (startVolume > 0) // Если звук был выключен, установим начальную громкость в 0
+        {
+            startVolume = 0f;
+        }
+
+        engineSource.Play(); // Включаем источник звука
+
+        while (elapsedTime < fadeInDuration)
+        {
+            engineSource.volume = Mathf.Lerp(startVolume, targetVolume, elapsedTime / fadeInDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        engineSource.volume = targetVolume; // Устанавливаем конечную громкость
+    }
+
     // Обработчик нажатия кнопки ускорения
     public void Run()
     {
@@ -212,6 +274,11 @@ public class CarController : MonoBehaviour
         brakeAcceleration = value;
     }
 
+    public void SetCanMove(bool canMove)
+    {
+        this.canMove = canMove;
+    }
+
     // Свойства для проверки состояния круга
     public bool LapStarted
     {
@@ -221,5 +288,10 @@ public class CarController : MonoBehaviour
     public bool LapEnded
     {
         get { return lapEnded; }
+    }
+
+    public float MaxSpeed
+    {
+        get { return maxSpeed; }
     }
 }

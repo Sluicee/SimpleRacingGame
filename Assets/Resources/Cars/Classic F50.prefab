@@ -388,7 +388,7 @@ PrefabInstance:
     - target: {fileID: 3913415915038054617, guid: 4bb4d160f57d7574c89d05eb63df672c,
         type: 3}
       propertyPath: maxSpeed
-      value: 18
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3913415915038054617, guid: 4bb4d160f57d7574c89d05eb63df672c,
         type: 3}
@@ -510,6 +510,11 @@ PrefabInstance:
       propertyPath: wheels.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6453273731731419748, guid: 4bb4d160f57d7574c89d05eb63df672c,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9619b0b05ab827e4ab1f5bfc7c479bca, type: 3}
     - target: {fileID: 8037769149259518492, guid: 4bb4d160f57d7574c89d05eb63df672c,
         type: 3}
       propertyPath: rotationSpeed

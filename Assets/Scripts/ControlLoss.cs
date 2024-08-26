@@ -65,7 +65,7 @@ public class ControlLoss : MonoBehaviour
             return;
         }
 
-        carController.enabled = false; // Отключаем управление
+        carController.SetCanMove(false); // Отключаем управление
         pathFollower.enabled = false;  // Отключаем следование путевым точкам
         HasLostControl = true; // Устанавливаем флаг потери контроля
 
@@ -84,7 +84,7 @@ public class ControlLoss : MonoBehaviour
         {
             cameraFollow.SetCollisionMode(true);
         }
-
+        carController.TurnOffEngine();
         raceWinLose.ShowLoseScreen(); // Показываем экран проигрыша
     }
 

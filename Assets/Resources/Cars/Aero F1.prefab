@@ -500,6 +500,11 @@ PrefabInstance:
       propertyPath: boostMultiplier
       value: 3.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8405206116401204203, guid: b7a44665b71fa134e89bbcbf44c3339a,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 25c12e93870d7124aa3fa1be0bb26002, type: 3}
     - target: {fileID: 8945556662981425351, guid: b7a44665b71fa134e89bbcbf44c3339a,
         type: 3}
       propertyPath: m_Mass
