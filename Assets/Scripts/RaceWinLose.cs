@@ -33,6 +33,10 @@ public class RaceWinLose : MonoBehaviour
 
     private string trackName;  // Имя текущей трассы (уникальное)
 
+    [SerializeField] private AudioClip winSound; // Звук для победы
+    [SerializeField] private AudioClip loseSound; // Звук для поражения
+    [SerializeField] private AudioSource audioSource; // Компонент AudioSource для воспроизведения звука
+
     private void Start()
     {
         // Убедитесь, что меню не активно при запуске
@@ -71,6 +75,8 @@ public class RaceWinLose : MonoBehaviour
         carController.SetBrakeAcceleration(100f);
         carController.Stop();
         CurrencyManager.Instance.AddCurrency(award);
+
+        PlaySound(winSound); // Воспроизведение звука победы
     }
 
     public void ShowLoseScreen()
@@ -79,6 +85,16 @@ public class RaceWinLose : MonoBehaviour
         gameUI.SetActive(false); // Отключаем UI игры
         telemetryUI.SetActive(false); // Отключаем UI телеметрии
         carController.Stop();
+
+        PlaySound(loseSound); // Воспроизведение звука поражения
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
     }
 
     public void QuitGame()

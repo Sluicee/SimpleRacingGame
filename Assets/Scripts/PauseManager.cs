@@ -5,6 +5,7 @@ public class PauseManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu; // UI для меню паузы
     [SerializeField] private GameObject gameUI;    // UI для игрового интерфейса
+    [SerializeField] private MusicManager musicManager;
     private bool isPaused = false;
     private CarController carController;
 
@@ -20,6 +21,8 @@ public class PauseManager : MonoBehaviour
         // Немедленно выключаем звук двигателя
         carController.engineSource.Pause();
 
+        musicManager.EnterMenuMode(); // Измените громкость при паузе
+
         // Останавливаем время и показываем меню паузы
         Time.timeScale = 0;
         pauseMenu.SetActive(true);
@@ -31,6 +34,8 @@ public class PauseManager : MonoBehaviour
     public void Resume()
     {
         if (!isPaused) return;
+
+        musicManager.EnterGameMode(); // Восстановите громкость в игре
 
         // Восстанавливаем время
         Time.timeScale = 1;
