@@ -1,5 +1,5 @@
 {
-  "idSave": 63,
+  "idSave": 66,
   "isFirstSession": false,
   "language": "ru",
   "promptDone": false,
@@ -7,15 +7,10 @@
   "unlockedCars": [
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
     2
   ],
-  "SelectedCarIndex": 0,
-  "SelectedTrackIndex": 0,
+  "SelectedCarIndex": 2,
+  "SelectedTrackIndex": 1,
   "recordTime": 0.0,
   "trackNames": [
     "Tempesta Circuit"

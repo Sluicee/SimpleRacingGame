@@ -43,7 +43,7 @@ MonoBehaviour:
   leaderboardEnable: 1
   saveScoreAnonymousPlayers: 1
   leaderboardSimulation:
-  - technoName: advanced
+  - technoName: TempestaCircuit
     entries: 'Test LeaderBoard
 
       Name: advanced
@@ -55,7 +55,7 @@ MonoBehaviour:
 
       3. Tanya: 23'
     isDefault: 0
-    isInvertSortOrder: 0
+    isInvertSortOrder: 1
     decimalOffset: 0
     type: numeric
     players:
@@ -133,7 +133,7 @@ MonoBehaviour:
     thisPlayer:
       rank: 0
       score: 0
-  - technoName: time
+  - technoName: ThunderboltOval
     entries: 'Test LeaderBoard
 
       Name: time
@@ -145,7 +145,7 @@ MonoBehaviour:
 
       3. Maria: 23'
     isDefault: 0
-    isInvertSortOrder: 0
+    isInvertSortOrder: 1
     decimalOffset: 0
     type: numeric
     players:
