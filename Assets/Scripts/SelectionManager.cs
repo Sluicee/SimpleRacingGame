@@ -4,6 +4,10 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections;
+#if YANDEX_SDK
+using YG;
+#endif
+using UnityEngine.SocialPlatforms.Impl;
 
 public class SelectionManager : MonoBehaviour
 {
@@ -49,6 +53,11 @@ public class SelectionManager : MonoBehaviour
 
     public static Sprite SelectedCarImage;
 
+#if YANDEX_SDK
+    [SerializeField] private LeaderboardYG leaderboard;
+    [SerializeField] private TMP_Text lbName;
+#endif
+
     private void Awake()
     {
         carDataManager = CarDataFactory.CreateCarDataManager();
@@ -72,6 +81,12 @@ public class SelectionManager : MonoBehaviour
         purchaseButton.onClick.AddListener(PurchaseCar);
 
         Time.timeScale = 1.0f;
+
+#if YANDEX_SDK
+        leaderboard.SetNameLB(trackDataList[selectedTrackIndex].trackSceneName.Replace(" ", ""));
+        leaderboard.UpdateLB();
+        lbName.text = trackDataList[selectedTrackIndex].trackSceneName;
+#endif
     }
 
     private void NextCar()
@@ -98,6 +113,11 @@ public class SelectionManager : MonoBehaviour
 
         selectedTrackIndex = (selectedTrackIndex + 1) % trackDataList.Count;
         StartCoroutine(SmoothTrackChange());
+#if YANDEX_SDK
+        leaderboard.SetNameLB(trackDataList[selectedTrackIndex].trackSceneName.Replace(" ", ""));
+        leaderboard.UpdateLB();
+        lbName.text = trackDataList[selectedTrackIndex].trackSceneName;
+#endif
         trackDataManager.SaveTrackData(selectedTrackIndex);
     }
 
@@ -107,6 +127,11 @@ public class SelectionManager : MonoBehaviour
 
         selectedTrackIndex = (selectedTrackIndex - 1 + trackDataList.Count) % trackDataList.Count;
         StartCoroutine(SmoothTrackChange());
+#if YANDEX_SDK
+        leaderboard.SetNameLB(trackDataList[selectedTrackIndex].trackSceneName.Replace(" ", ""));
+        leaderboard.UpdateLB();
+        lbName.text = trackDataList[selectedTrackIndex].trackSceneName;
+#endif
         trackDataManager.SaveTrackData(selectedTrackIndex);
     }
 

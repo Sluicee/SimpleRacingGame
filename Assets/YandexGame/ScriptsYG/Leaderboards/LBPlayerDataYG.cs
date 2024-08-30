@@ -13,6 +13,7 @@ namespace YG
         public ImageLoadYG imageLoad;
         public MonoBehaviour[] topPlayerActivityComponents = new MonoBehaviour[0];
         public MonoBehaviour[] thisPlayerActivityComponents = new MonoBehaviour[0];
+        public TMP_FontAsset thisPlayerFont;
 
         [Serializable]
         public struct TextLegasy
@@ -101,7 +102,25 @@ namespace YG
             {
                 for (int i = 0; i < objects.Length; i++)
                 {
-                    objects[i].enabled = activity;
+                    TMP_Text textObject = objects[i] as TMP_Text;
+                    if (textObject != null)
+                    {
+                        // Изменение цвета текста в зависимости от значения activity
+                        if (activity)
+                        {
+                            textObject.color = Color.black; // Цвет, когда активен
+                            textObject.font = thisPlayerFont;
+                        }
+                        else
+                        {
+                            textObject.color = Color.white; // Цвет, когда неактивен
+                        }
+                    }
+                    else
+                    {
+                        // Если объект не является TMP_Text, применяем включение/отключение компонента
+                        objects[i].enabled = activity;
+                    }
                 }
             }
         }

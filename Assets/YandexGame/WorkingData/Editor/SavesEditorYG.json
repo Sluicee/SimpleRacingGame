@@ -1,20 +1,26 @@
 {
-    "idSave": 44,
-    "isFirstSession": false,
-    "language": "ru",
-    "promptDone": false,
-    "currency": 17500,
-    "unlockedCars": [
-        0,
-        2
-    ],
-    "SelectedCarIndex": 1,
-    "SelectedTrackIndex": 0,
-    "recordTime": 0.0,
-    "trackNames": [
-        "Tempesta Circuit"
-    ],
-    "trackRecords": [
-        28.38058090209961
-    ]
+  "idSave": 63,
+  "isFirstSession": false,
+  "language": "ru",
+  "promptDone": false,
+  "currency": 17500,
+  "unlockedCars": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2
+  ],
+  "SelectedCarIndex": 0,
+  "SelectedTrackIndex": 0,
+  "recordTime": 0.0,
+  "trackNames": [
+    "Tempesta Circuit"
+  ],
+  "trackRecords": [
+    28.38058
+  ]
 }
