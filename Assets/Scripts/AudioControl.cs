@@ -17,14 +17,16 @@ public class AudioControl : MonoBehaviour
         muteButton.onClick.AddListener(ToggleMute);
 
         // Устанавливаем начальное состояние кнопки в зависимости от того, что сохранено
-        isMuted = PlayerPrefs.GetInt("IsMuted", 0) == 1;
+        //isMuted = PlayerPrefs.GetInt("IsMuted", 0) == 1;
+        isMuted = GameData.Muted;
         UpdateAudioState();
     }
 
     private void ToggleMute()
     {
         isMuted = !isMuted;
-        PlayerPrefs.SetInt("IsMuted", isMuted ? 1 : 0); // Сохраняем состояние звука
+        //PlayerPrefs.SetInt("IsMuted", isMuted ? 1 : 0); // Сохраняем состояние звука
+        GameData.Muted = isMuted;
         UpdateAudioState();
     }
 

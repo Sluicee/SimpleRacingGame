@@ -6,6 +6,10 @@ public class Shop : MonoBehaviour
     public void AddCurrency(int amount)
     {
         CurrencyManager.Instance.AddCurrency(amount);
-        Debug.Log(amount + " currency purchased!");
+    }
+
+    public void CurrencyForAds(int amount)
+    {
+        CurrencyManager.Instance.CurrencyForAds(amount);
     }
 }

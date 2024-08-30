@@ -37,8 +37,11 @@ public class RaceWinLose : MonoBehaviour
     [SerializeField] private AudioClip loseSound; // Звук для поражения
     [SerializeField] private AudioSource audioSource; // Компонент AudioSource для воспроизведения звука
 
+    private IPlayerData playerData;
+
     private void Start()
     {
+        playerData = PlayerDataFactory.CreatePlayerDataManager();
         // Убедитесь, что меню не активно при запуске
         winMenu.SetActive(false);
         loseMenu.SetActive(false);
@@ -122,15 +125,13 @@ public class RaceWinLose : MonoBehaviour
 
     private float GetRecordTime()
     {
-        // Загрузка рекордного времени для текущей трассы
-        return PlayerPrefs.GetFloat(trackName + "_RecordTime", Mathf.Infinity);
+        return playerData.LoadRecord(trackName);
     }
 
     private void SaveRecordTime(float newRecord)
     {
         // Сохранение нового рекордного времени для текущей трассы
-        PlayerPrefs.SetFloat(trackName + "_RecordTime", newRecord);
-        PlayerPrefs.Save();
+        playerData.SaveRecord(newRecord, trackName);
     }
 
     private void LoadRecordTime()

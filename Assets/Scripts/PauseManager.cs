@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+#if YANDEX_SDK
+using YG;
+#endif
+
 
 public class PauseManager : MonoBehaviour
 {
@@ -11,12 +15,19 @@ public class PauseManager : MonoBehaviour
 
     private void Start()
     {
+        #if YANDEX_SDK
+            YandexGame.GameplayStart();
+        #endif
         carController = FindObjectOfType<CarController>();
     }
 
     public void Pause()
     {
         if (isPaused) return;
+
+#if YANDEX_SDK
+        YandexGame.GameplayStop();
+#endif
 
         // Немедленно выключаем звук двигателя
         carController.engineSource.Pause();
@@ -34,6 +45,10 @@ public class PauseManager : MonoBehaviour
     public void Resume()
     {
         if (!isPaused) return;
+
+#if YANDEX_SDK
+        YandexGame.GameplayStart();
+#endif
 
         musicManager.EnterGameMode(); // Восстановите громкость в игре
 

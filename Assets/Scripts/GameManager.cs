@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+#if YANDEX_SDK
+using YG;
+#endif
 
 public class GameManager : MonoBehaviour
 {
@@ -91,6 +94,9 @@ public class GameManager : MonoBehaviour
     // Метод для выхода в главное меню
     public void Leave()
     {
+#if YANDEX_SDK
+        YandexGame.GameplayStop();
+#endif
         SceneManager.LoadScene("Menu");
     }
 }

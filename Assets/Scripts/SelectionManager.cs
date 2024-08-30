@@ -7,6 +7,10 @@ using System.Collections;
 
 public class SelectionManager : MonoBehaviour
 {
+    // Предположим, что вы инициализируете эти данные в зависимости от платформы
+    private ICarDataManager carDataManager;
+    private ITrackDataManager trackDataManager;
+
     [Header("Car Selection")]
     [SerializeField] private List<CarData> carDataList;
     [SerializeField] private Image carImage;
@@ -43,22 +47,20 @@ public class SelectionManager : MonoBehaviour
     private bool isCarChanging = false;
     private bool isTrackChanging = false;
 
-    private const string UNLOCKED_CARS_KEY = "UnlockedCars";
-    private const string SELECTED_CAR_KEY = "SelectedCarIndex";
-    private const string SELECTED_TRACK_KEY = "SelectedTrackIndex";
-
     public static Sprite SelectedCarImage;
+
+    private void Awake()
+    {
+        carDataManager = CarDataFactory.CreateCarDataManager();
+        trackDataManager = TrackDataFactory.CreateTrackDataManager();
+    }
 
     private void Start()
     {
-        if (carDataList.Count == 0 || trackDataList.Count == 0)
-        {
-            return;
-        }
+        
 
-        LoadCarData();
-        LoadTrackData();
-
+        carDataManager.LoadCarData(carDataList, out selectedCarIndex);
+        trackDataManager.LoadTrackData(out selectedTrackIndex);
         UpdateCarSelection();
         UpdateTrackSelection();
 
@@ -78,7 +80,7 @@ public class SelectionManager : MonoBehaviour
 
         selectedCarIndex = (selectedCarIndex + 1) % carDataList.Count;
         StartCoroutine(SmoothCarChange());
-        SaveCarData();
+        carDataManager.SaveCarData(selectedCarIndex, carDataList);
     }
 
     private void PreviousCar()
@@ -87,7 +89,7 @@ public class SelectionManager : MonoBehaviour
 
         selectedCarIndex = (selectedCarIndex - 1 + carDataList.Count) % carDataList.Count;
         StartCoroutine(SmoothCarChange());
-        SaveCarData();
+        carDataManager.SaveCarData(selectedCarIndex, carDataList);
     }
 
     private void NextTrack()
@@ -96,7 +98,7 @@ public class SelectionManager : MonoBehaviour
 
         selectedTrackIndex = (selectedTrackIndex + 1) % trackDataList.Count;
         StartCoroutine(SmoothTrackChange());
-        SaveTrackData();
+        trackDataManager.SaveTrackData(selectedTrackIndex);
     }
 
     private void PreviousTrack()
@@ -105,7 +107,7 @@ public class SelectionManager : MonoBehaviour
 
         selectedTrackIndex = (selectedTrackIndex - 1 + trackDataList.Count) % trackDataList.Count;
         StartCoroutine(SmoothTrackChange());
-        SaveTrackData();
+        trackDataManager.SaveTrackData(selectedTrackIndex);
     }
 
     private IEnumerator SmoothCarChange()
@@ -222,7 +224,7 @@ public class SelectionManager : MonoBehaviour
         {
             CurrencyManager.Instance.SpendCurrency(carPrice);
             selectedCar.isUnlocked = true;
-            SaveCarData();
+            carDataManager.SaveCarData(selectedCarIndex, carDataList);
             UpdateCarSelection();
             if (!isCarChanging)
             {
@@ -247,41 +249,5 @@ public class SelectionManager : MonoBehaviour
         GameData.SelectedTrack = trackDataList[selectedTrackIndex].trackSceneName;
 
         SceneManager.LoadScene(trackDataList[selectedTrackIndex].trackSceneName);
-    }
-
-    private void SaveCarData()
-    {
-        for (int i = 0; i < carDataList.Count; i++)
-        {
-            PlayerPrefs.SetInt(UNLOCKED_CARS_KEY + i, carDataList[i].isUnlocked ? 1 : 0);
-        }
-        PlayerPrefs.SetInt(SELECTED_CAR_KEY, selectedCarIndex);
-        PlayerPrefs.Save();
-    }
-
-    private void LoadCarData()
-    {
-        selectedCarIndex = PlayerPrefs.GetInt(SELECTED_CAR_KEY, 0);
-        for (int i = 0; i < carDataList.Count; i++)
-        {
-            int isUnlockedValue = PlayerPrefs.GetInt(UNLOCKED_CARS_KEY + i, -1);
-            if (isUnlockedValue != -1)
-            {
-                carDataList[i].isUnlocked = isUnlockedValue == 1;
-            }
-        }
-        UpdateCarSelection();
-    }
-
-    private void SaveTrackData()
-    {
-        PlayerPrefs.SetInt(SELECTED_TRACK_KEY, selectedTrackIndex);
-        PlayerPrefs.Save();
-    }
-
-    private void LoadTrackData()
-    {
-        selectedTrackIndex = PlayerPrefs.GetInt(SELECTED_TRACK_KEY, 0);
-        UpdateTrackSelection();
     }
 }
