@@ -65,7 +65,7 @@ namespace YG
         private void DestroyPurchasesList()
         {
             int childCount = rootSpawnPurchases.childCount;
-            for (int i = childCount - 1; i >= 0; i--)
+            for (int i = childCount - 1; i >= 1; i--)
             {
                 Destroy(rootSpawnPurchases.GetChild(i).gameObject);
             }

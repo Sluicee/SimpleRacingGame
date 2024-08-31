@@ -1,15 +1,14 @@
 {
-  "idSave": 66,
+  "idSave": 78,
   "isFirstSession": false,
   "language": "ru",
   "promptDone": false,
-  "currency": 17500,
+  "currency": 162500,
   "unlockedCars": [
-    0,
     0,
     2
   ],
-  "SelectedCarIndex": 2,
+  "SelectedCarIndex": 1,
   "SelectedTrackIndex": 1,
   "recordTime": 0.0,
   "trackNames": [

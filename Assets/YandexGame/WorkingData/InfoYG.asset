@@ -304,30 +304,30 @@ MonoBehaviour:
     de: 
     hi: 
   purshasesSimulation:
-  - id: gun
-    title: Gun
-    description: Product - Gun
-    imageURI: https://justplaygames.ru/public/Paymant1.png
-    price: 5 YAN
-    priceValue: 5
+  - id: 10000
+    title: 10000
+    description: Product - 10000 currency
+    imageURI: https://kappa.lol/mwBh3
+    price: 49 YAN
+    priceValue: 49
     priceCurrencyCode: YAN
     currencyImageURL: https://yastatic.net/s3/games-static/static-data/images/payments/sdk/currency-icon-s@2x.png
     consumed: 1
-  - id: armor
-    title: Armor
-    description: Product - Armor
-    imageURI: https://justplaygames.ru/public/Paymant2.png
-    price: 10 YAN
-    priceValue: 10
+  - id: 25000
+    title: 25000
+    description: Product - 25000 currency
+    imageURI: https://kappa.lol/mwBh3
+    price: 109 YAN
+    priceValue: 109
     priceCurrencyCode: YAN
     currencyImageURL: https://yastatic.net/s3/games-static/static-data/images/payments/sdk/currency-icon-s@2x.png
     consumed: 1
-  - id: grenade
-    title: Grenade
-    description: Product - Grenade
-    imageURI: https://justplaygames.ru/public/Paymant3.png
-    price: 30 YAN
-    priceValue: 30
+  - id: 50000
+    title: 50000
+    description: Product - 50000 currency
+    imageURI: https://kappa.lol/mwBh3
+    price: 199 YAN
+    priceValue: 199
     priceCurrencyCode: YAN
     currencyImageURL: https://yastatic.net/s3/games-static/static-data/images/payments/sdk/currency-icon-s@2x.png
     consumed: 1
