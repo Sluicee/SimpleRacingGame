@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 54404956}
   - component: {fileID: 54404955}
   - component: {fileID: 54404957}
+  - component: {fileID: 54404958}
   m_Layer: 5
   m_Name: Paused Text (TMP)
   m_TagString: Untagged
@@ -224,7 +225,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 77}
+  m_SizeDelta: {x: 394.2008, y: 77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &54404955
 MonoBehaviour:
@@ -342,6 +343,58 @@ MonoBehaviour:
   fadeDuration: 1
   blinkSpeed: 0.35
   baseColor: {r: 1, g: 1, b: 1, a: 0}
+--- !u!114 &54404958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54404953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 54404955}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u041F\u0410\u0423\u0417\u0410"
+  en: PAUSED
+  tr: DURAKLATILDI
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: EN PAUSE
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: PAUSADO
+  pt: PAUSADO
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: PAUSE
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 7/7 completed
+  componentTextField: 1
+  countLang: 7
 --- !u!1 &61676305
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,6 +406,7 @@ GameObject:
   - component: {fileID: 61676308}
   - component: {fileID: 61676307}
   - component: {fileID: 61676306}
+  - component: {fileID: 61676309}
   m_Layer: 5
   m_Name: prev text
   m_TagString: Untagged
@@ -475,8 +529,60 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000030517578, y: -76.35004}
-  m_SizeDelta: {x: 200, y: 23.1}
+  m_SizeDelta: {x: 450.11, y: 23.1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &61676309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61676305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 61676306}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u043F\u0440\u043E\u0448\u043B\u044B\u0439 \u0440\u0435\u043A\u043E\u0440\u0434"
+  en: memory previews
+  tr: "bellek \xF6nizlemeleri"
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: "aper\xE7us de la m\xE9moire"
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: previos recuerdo
+  pt: "visualiza\xE7\xF5es de mem\xF3ria"
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: Speichervorschauen
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 7/7 completed
+  componentTextField: 1
+  countLang: 7
 --- !u!1 &72290200
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,6 +742,7 @@ GameObject:
   - component: {fileID: 73995214}
   - component: {fileID: 73995216}
   - component: {fileID: 73995215}
+  - component: {fileID: 73995217}
   m_Layer: 5
   m_Name: LBText
   m_TagString: Untagged
@@ -760,6 +867,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73995213}
   m_CullTransparentMesh: 1
+--- !u!114 &73995217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73995213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 73995215}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u0422\u0410\u0411\u041B\u0418\u0426\u0410 \u041B\u0418\u0414\u0415\u0420\u041E\u0412"
+  en: LEADERBOARD
+  tr: "L\u0130DERL\u0130K TABLOSU"
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: CLASSEMENT
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: "TABLA DE L\xCDDERES"
+  pt: "LIDERAN\xC7A"
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: BESTENLISTE
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 7/7 completed
+  componentTextField: 1
+  countLang: 7
 --- !u!1 &80720093
 GameObject:
   m_ObjectHideFlags: 0
@@ -1663,6 +1822,7 @@ GameObject:
   - component: {fileID: 161763541}
   - component: {fileID: 161763543}
   - component: {fileID: 161763542}
+  - component: {fileID: 161763544}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1737,8 +1897,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1787,6 +1947,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161763540}
   m_CullTransparentMesh: 1
+--- !u!114 &161763544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161763540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 161763542}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u041F\u0415\u0420\u0415\u0417\u0410\u041F\u0423\u0421\u041A"
+  en: RESTART
+  tr: "TEKRAR BA\u015ELAT"
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: "RED\xC9MARRAGE"
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: REANUDAR
+  pt: REINICIAR
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: NEU STARTEN
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 7/7 completed
+  componentTextField: 1
+  countLang: 7
 --- !u!1 &242612189
 GameObject:
   m_ObjectHideFlags: 0
@@ -2534,6 +2746,7 @@ GameObject:
   - component: {fileID: 401381122}
   - component: {fileID: 401381124}
   - component: {fileID: 401381123}
+  - component: {fileID: 401381125}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2658,6 +2871,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401381121}
   m_CullTransparentMesh: 1
+--- !u!114 &401381125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401381121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 401381123}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u0437\u0430\u043D\u043E\u0432\u043E"
+  en: Restart Race
+  tr: "Yar\u0131\u015F\u0131 Yeniden Ba\u015Flat"
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: Recommencer la course
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: Reiniciar carrera
+  pt: Reiniciar corrida
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: Rennen neu starten
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 7/7 completed
+  componentTextField: 1
+  countLang: 7
 --- !u!1 &439962025
 GameObject:
   m_ObjectHideFlags: 0
@@ -3216,6 +3481,7 @@ GameObject:
   - component: {fileID: 544007573}
   - component: {fileID: 544007575}
   - component: {fileID: 544007574}
+  - component: {fileID: 544007576}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3340,6 +3606,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 544007572}
   m_CullTransparentMesh: 1
+--- !u!114 &544007576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544007572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 544007574}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u041D\u0410\u0417\u0410\u0414"
+  en: BACK
+  tr: "GER\u0130"
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: DOS
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: "ATR\xC1S"
+  pt: VOLTAR
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: "ZUR\xDCCK"
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 7/7 completed
+  componentTextField: 1
+  countLang: 7
 --- !u!1 &581799433
 GameObject:
   m_ObjectHideFlags: 0
@@ -3780,6 +4098,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d3cb973408a7934468fc399590dc534d,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -843239394483264123, guid: d3cb973408a7934468fc399590dc534d,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -3789,6 +4112,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: -843239394483264123, guid: d3cb973408a7934468fc399590dc534d,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d3cb973408a7934468fc399590dc534d,
         type: 3}
@@ -5436,6 +5764,7 @@ GameObject:
   - component: {fileID: 1153577141}
   - component: {fileID: 1153577143}
   - component: {fileID: 1153577142}
+  - component: {fileID: 1153577144}
   m_Layer: 5
   m_Name: welldone
   m_TagString: Untagged
@@ -5459,8 +5788,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 125.16556, y: -63}
-  m_SizeDelta: {x: 250, y: 50}
+  m_AnchoredPosition: {x: 236.24, y: -63}
+  m_SizeDelta: {x: 427.72, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1153577142
 MonoBehaviour:
@@ -5510,14 +5839,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 34
+  m_fontSizeBase: 34
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_fontStyle: 16
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -5560,6 +5889,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153577140}
   m_CullTransparentMesh: 1
+--- !u!114 &1153577144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153577140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 1153577142}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u041E\u0422\u041B\u0418\u0427\u041D\u0410\u042F \u0420\u0410\u0411\u041E\u0422\u0410"
+  en: WELL DONE
+  tr: "TEBR\u0130KLER"
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: "BIEN JOU\xC9"
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: BIEN HECHO
+  pt: BOM TRABALHO
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: GUT GEMACHT
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 7/7 completed
+  componentTextField: 1
+  countLang: 7
 --- !u!1 &1161850468
 GameObject:
   m_ObjectHideFlags: 0
@@ -5869,6 +6250,7 @@ GameObject:
   - component: {fileID: 1219813637}
   - component: {fileID: 1219813639}
   - component: {fileID: 1219813638}
+  - component: {fileID: 1219813640}
   m_Layer: 5
   m_Name: new record!
   m_TagString: Untagged
@@ -5893,7 +6275,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000030517578, y: 75.599884}
-  m_SizeDelta: {x: 332.9725, y: 50}
+  m_SizeDelta: {x: 450.09, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1219813638
 MonoBehaviour:
@@ -5949,7 +6331,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -5993,6 +6375,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1219813636}
   m_CullTransparentMesh: 1
+--- !u!114 &1219813640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219813636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 1219813638}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u041D\u041E\u0412\u042B\u0419 \u0420\u0415\u041A\u041E\u0420\u0414!"
+  en: NEW RECORD!
+  tr: "YEN\u0130 REKOR!"
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: NOUVEAU RECORD !
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: "\xA1NUEVO R\xC9CORD!"
+  pt: NOVO RECORDE!
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: NEUER REKORD!
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 7/7 completed
+  componentTextField: 1
+  countLang: 7
 --- !u!1 &1257401049
 GameObject:
   m_ObjectHideFlags: 0
@@ -6740,6 +7174,7 @@ GameObject:
   - component: {fileID: 1340875348}
   - component: {fileID: 1340875350}
   - component: {fileID: 1340875349}
+  - component: {fileID: 1340875351}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -6864,6 +7299,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340875347}
   m_CullTransparentMesh: 1
+--- !u!114 &1340875351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340875347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 1340875349}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u0417\u0430\u043D\u043E\u0432\u043E"
+  en: Race again
+  tr: "Tekrar yar\u0131\u015F"
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: Encore une course
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: Corre de nuevo
+  pt: Corra novamente
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: Wieder Rennen fahren
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 7/7 completed
+  componentTextField: 1
+  countLang: 7
 --- !u!1 &1342685871
 GameObject:
   m_ObjectHideFlags: 0
@@ -7010,6 +7497,7 @@ GameObject:
   - component: {fileID: 1397376748}
   - component: {fileID: 1397376750}
   - component: {fileID: 1397376749}
+  - component: {fileID: 1397376751}
   m_Layer: 5
   m_Name: Win text
   m_TagString: Untagged
@@ -7033,8 +7521,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 375.66, y: 50}
+  m_AnchoredPosition: {x: 0, y: -18.6422}
+  m_SizeDelta: {x: 450.09, y: 87.2842}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1397376749
 MonoBehaviour:
@@ -7134,6 +7622,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1397376747}
   m_CullTransparentMesh: 1
+--- !u!114 &1397376751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397376747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 1397376749}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u041F\u041E\u041F\u0420\u041E\u0411\u0423\u0415\u041C \u0415\u0429\u0415
+    \u0420\u0410\u0417!"
+  en: "LET\u2019S TRY AGAIN!"
+  tr: "YEN\u0130DEN DENEYEL\u0130M!"
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: "ESSAYONS ENCORE\_!"
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: "\xA1INTENT\xC9MOSO OTRA VEZ!"
+  pt: VAMOS TENTAR DE NOVO!
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: Versuchen wir es noch einmal!
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 7/7 completed
+  componentTextField: 1
+  countLang: 7
 --- !u!1 &1398418110
 GameObject:
   m_ObjectHideFlags: 0
@@ -7697,13 +8238,13 @@ LineRenderer:
   m_Positions:
   - {x: 0, y: 0.2, z: -0.18701553}
   - {x: 44.75981, y: 0.93288004, z: -0.09503937}
-  - {x: 75.66422, y: 5.3733706, z: -10.966171}
+  - {x: 74.10263, y: 5.3733706, z: -12.363388}
   - {x: 83.39839, y: 6.8105407, z: -28.212994}
   - {x: 70.036575, y: 3.471902, z: -43.93348}
   - {x: 33.965775, y: 0.2, z: -52.440395}
   - {x: -2.0673666, y: 0.2, z: -53.220333}
-  - {x: -60.02304, y: 2.498094, z: -48.93474}
-  - {x: -76.61536, y: 5.1335664, z: -34.489147}
+  - {x: -59.75768, y: 2.498094, z: -47.8733}
+  - {x: -77.111626, y: 5.1335664, z: -33.00034}
   - {x: -79.4884, y: 5.590984, z: -10.018148}
   - {x: -39.7442, y: 0.38491267, z: -0.020656586}
   - {x: 0, y: 0.2, z: -0.1870155}
@@ -8434,6 +8975,7 @@ GameObject:
   - component: {fileID: 1781770956}
   - component: {fileID: 1781770958}
   - component: {fileID: 1781770957}
+  - component: {fileID: 1781770959}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -8558,6 +9100,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781770955}
   m_CullTransparentMesh: 1
+--- !u!114 &1781770959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781770955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 1781770957}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u043B\u0438\u0434\u0435\u0440\u044B"
+  en: Leaderboard
+  tr: Liderlik tablosu
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: Classement
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: "Tabla de clasificaci\xF3n"
+  pt: "Tabela de classifica\xE7\xE3o"
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: Bestenliste
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 7/7 completed
+  componentTextField: 1
+  countLang: 7
 --- !u!1 &1790601396
 GameObject:
   m_ObjectHideFlags: 0
@@ -8644,6 +9238,7 @@ GameObject:
   - component: {fileID: 1791183691}
   - component: {fileID: 1791183693}
   - component: {fileID: 1791183692}
+  - component: {fileID: 1791183694}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -8718,13 +9313,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -8768,6 +9363,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1791183690}
   m_CullTransparentMesh: 1
+--- !u!114 &1791183694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791183690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 1791183692}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C"
+  en: RESUME
+  tr: Devam et
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: Reprendre
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: Reanudar
+  pt: Continuar
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: Fortsetzen
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 7/7 completed
+  componentTextField: 1
+  countLang: 7
 --- !u!1 &1791561132
 GameObject:
   m_ObjectHideFlags: 0
@@ -8779,6 +9426,7 @@ GameObject:
   - component: {fileID: 1791561133}
   - component: {fileID: 1791561135}
   - component: {fileID: 1791561134}
+  - component: {fileID: 1791561136}
   m_Layer: 5
   m_Name: crash
   m_TagString: Untagged
@@ -8802,8 +9450,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 197, y: -63}
-  m_SizeDelta: {x: 350, y: 50}
+  m_AnchoredPosition: {x: 236.05, y: -63}
+  m_SizeDelta: {x: 428.09, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1791561134
 MonoBehaviour:
@@ -8859,7 +9507,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -8903,6 +9551,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1791561132}
   m_CullTransparentMesh: 1
+--- !u!114 &1791561136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791561132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 1791561134}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u0412\u042B \u0420\u0410\u0417\u0411\u0418\u041B\u0418\u0421\u042C..."
+  en: YOU CRASHED...
+  tr: KAZA OLDUNUZ...
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: VOUS VOUS ETES ECRASE...
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: TE ESTRELLASTE...
+  pt: VOCE CAIU...
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: "Du bist abgest\xFCrzt..."
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 7/7 completed
+  componentTextField: 1
+  countLang: 7
 --- !u!1 &1820190524
 GameObject:
   m_ObjectHideFlags: 0
@@ -9189,6 +9889,7 @@ GameObject:
   - component: {fileID: 1884766831}
   - component: {fileID: 1884766833}
   - component: {fileID: 1884766832}
+  - component: {fileID: 1884766834}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -9263,13 +9964,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -9313,6 +10014,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884766830}
   m_CullTransparentMesh: 1
+--- !u!114 &1884766834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884766830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 1884766832}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u0412\u044B\u0439\u0442\u0438"
+  en: LEAVE
+  tr: AYRILMAK
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: Quitter
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: Salir
+  pt: Sair
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: Verlassen
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 7/7 completed
+  componentTextField: 1
+  countLang: 7
 --- !u!1 &1888446361
 GameObject:
   m_ObjectHideFlags: 0
@@ -9459,6 +10212,7 @@ GameObject:
   - component: {fileID: 1891739380}
   - component: {fileID: 1891739382}
   - component: {fileID: 1891739381}
+  - component: {fileID: 1891739383}
   m_Layer: 5
   m_Name: Win text
   m_TagString: Untagged
@@ -9483,7 +10237,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 34.00001}
-  m_SizeDelta: {x: 250, y: 50}
+  m_SizeDelta: {x: 450.09, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1891739381
 MonoBehaviour:
@@ -9583,6 +10337,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891739379}
   m_CullTransparentMesh: 1
+--- !u!114 &1891739383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891739379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 1891739381}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u0417\u0410\u0412\u0415\u0420\u0428\u0415\u041D\u041E"
+  en: FINISHED BY
+  tr: "TARAFINDAN B\u0130T\u0130R\u0130LEN"
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: FINI PAR
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: TERMINADO POR
+  pt: TERMINADO POR
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: BEENDET VON
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 7/7 completed
+  componentTextField: 1
+  countLang: 7
 --- !u!1 &1904274458
 GameObject:
   m_ObjectHideFlags: 0
@@ -9594,6 +10400,7 @@ GameObject:
   - component: {fileID: 1904274459}
   - component: {fileID: 1904274461}
   - component: {fileID: 1904274460}
+  - component: {fileID: 1904274462}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -9718,6 +10525,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904274458}
   m_CullTransparentMesh: 1
+--- !u!114 &1904274462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904274458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 1904274460}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u0437\u0430\u043A\u043E\u043D\u0447\u0438\u0442\u044C"
+  en: finish now
+  tr: "\u015Fimdi bitir"
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: finis maintenant
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: terminar ahora
+  pt: terminar agora
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: Jetzt fertig
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 7/7 completed
+  componentTextField: 1
+  countLang: 7
 --- !u!1 &1907969086
 GameObject:
   m_ObjectHideFlags: 0
@@ -9990,6 +10849,7 @@ GameObject:
   - component: {fileID: 1918463075}
   - component: {fileID: 1918463077}
   - component: {fileID: 1918463076}
+  - component: {fileID: 1918463078}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -10114,6 +10974,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1918463074}
   m_CullTransparentMesh: 1
+--- !u!114 &1918463078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918463074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 1918463076}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u041B\u0438\u0434\u0435\u0440\u044B"
+  en: Leaderboard
+  tr: Liderlik tablosu
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: Classement
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: "Tabla de clasificaci\xF3n"
+  pt: "Tabela de classifica\xE7\xE3o"
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: Bestenliste
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 7/7 completed
+  componentTextField: 1
+  countLang: 7
 --- !u!1 &1923880885
 GameObject:
   m_ObjectHideFlags: 0

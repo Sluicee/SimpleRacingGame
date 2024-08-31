@@ -19,7 +19,7 @@ MonoBehaviour:
     authorized: 1
     isMobile: 0
     language: ru
-    name: Player this
+    name: "\u041C\u0430\u043A\u0441\u0438\u043C \u0418\u043C\u0430\u043D\u0430\u0435\u0432"
     uniqueID: 000
     photo: https://justplaygames.ru/public/icon_player.png
     payingStatus: paying
