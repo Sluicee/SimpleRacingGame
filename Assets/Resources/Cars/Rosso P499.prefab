@@ -275,6 +275,8 @@ MonoBehaviour:
   spinDamping: 1
   cameraFollow: {fileID: 0}
   raceWinLose: {fileID: 0}
+  trackTag: Track
+  maxTiltAngleZ: 20
 --- !u!54 &4272856206081911023
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -4241,10 +4241,16 @@ MonoBehaviour:
   nextCarButton: {fileID: 1915940576}
   previousCarButton: {fileID: 598675051}
   trackDataList:
-  - trackSceneName: Tempesta Circuit
-    trackImage: {fileID: 21300000, guid: 69ac2ec4a15b10d4cae53f58b49a8e7e, type: 3}
   - trackSceneName: Thunderbolt Oval
     trackImage: {fileID: 21300000, guid: 16ad2ffd6ecf4a54585cf5a69d10a141, type: 3}
+  - trackSceneName: Sakura Speedway
+    trackImage: {fileID: 21300000, guid: a6698c5f2cfd24c4dba92cc0446a15c3, type: 3}
+  - trackSceneName: Alpine Run
+    trackImage: {fileID: 21300000, guid: da01d5c12b4705848b14acaceabcb583, type: 3}
+  - trackSceneName: Tempesta Circuit
+    trackImage: {fileID: 21300000, guid: 69ac2ec4a15b10d4cae53f58b49a8e7e, type: 3}
+  - trackSceneName: Coyote Ridge
+    trackImage: {fileID: 21300000, guid: db104587a39f01f4098c83cdb3e40f1c, type: 3}
   trackImage: {fileID: 593043469}
   trackNameText: {fileID: 1529918850}
   nextTrackButton: {fileID: 637192835}
@@ -4637,15 +4643,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 3
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!224 &595053201 stripped
 RectTransform:
@@ -9183,8 +9189,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 45fe027cded434b40ba51510f5a2c0c2, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 3
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
@@ -10119,6 +10125,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Payments Catalog
       objectReference: {fileID: 0}
+    - target: {fileID: 8641676098531048174, guid: b97c083bfad292a4d893ffbfdf23208f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8641676098531048175, guid: b97c083bfad292a4d893ffbfdf23208f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -10735,7 +10746,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -194.29, y: -49.3}
+  m_AnchoredPosition: {x: -194.28998, y: -49.30005}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1791732272

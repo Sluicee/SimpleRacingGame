@@ -1,9 +1,9 @@
 {
-  "idSave": 104,
+  "idSave": 191,
   "isFirstSession": false,
   "language": "ru",
   "promptDone": false,
-  "currency": 280000,
+  "currency": 155000,
   "unlockedCars": [
     0,
     0,
@@ -11,22 +11,25 @@
     0,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
+    1,
     2
   ],
-  "SelectedCarIndex": 2,
-  "SelectedTrackIndex": 0,
+  "SelectedCarIndex": 1,
+  "SelectedTrackIndex": 4,
   "recordTime": 0.0,
   "trackNames": [
     "Tempesta Circuit",
-    "Thunderbolt Oval"
+    "Thunderbolt Oval",
+    "Coyote Ridge",
+    "Alpine Run",
+    "Sakura Speedway"
   ],
   "trackRecords": [
     21.3946075,
-    13.6638184
+    13.6638184,
+    32.2962646,
+    41.9074249,
+    56.2241936
   ],
-  "racedTimes": 2
+  "racedTimes": 8
 }

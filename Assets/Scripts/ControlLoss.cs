@@ -15,6 +15,12 @@ public class ControlLoss : MonoBehaviour
     private PathFollower pathFollower;
     public bool HasLostControl { get; private set; } = false; // Флаг для проверки потери контроля
 
+    private float timeSinceLastCollision = 0f; // Время с последнего столкновения
+    private const float maxTimeWithoutCollision = 0.6f; // Максимальное время без касания трассы
+    [SerializeField] private string trackTag = "Track"; // Тег для зоны потери контроля
+
+    [SerializeField] private float maxTiltAngleZ = 30f; // Максимальный угол наклона по Z
+
     public void Initialize(RaceWinLose _raceWinLose, CameraFollow _cameraFollow)
     {
         raceWinLose = _raceWinLose;
@@ -57,6 +63,15 @@ public class ControlLoss : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        // Обновляем таймер при касании трассы
+        if (collision.gameObject.CompareTag(trackTag))
+        {
+            timeSinceLastCollision = 0f;
+        }
+    }
+
     private void LoseControl(Vector3 collisionNormal)
     {
         if (carController == null || rb == null || pathFollower == null)
@@ -90,6 +105,32 @@ public class ControlLoss : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!HasLostControl)
+        {
+            // Если машина не касается трассы, увеличиваем таймер
+            timeSinceLastCollision += Time.fixedDeltaTime;
+
+            // Если машина не касалась трассы дольше допустимого времени, вызываем потерю контроля
+            if (timeSinceLastCollision >= maxTimeWithoutCollision)
+            {
+                Debug.Log("Car hasn't touched the track for too long. Losing control.");
+                LoseControl(Vector3.up); // Вызов метода потери контроля
+            }
+
+            // Проверка угла наклона по оси Z
+            float currentTiltAngleZ = transform.eulerAngles.z;
+            if (currentTiltAngleZ > 180f)
+            {
+                currentTiltAngleZ -= 360f;
+            }
+
+            if (Mathf.Abs(currentTiltAngleZ) > maxTiltAngleZ)
+            {
+                Debug.Log("Car tilt angle exceeded limit. Losing control.");
+                LoseControl(Vector3.up); // Вызов метода потери контроля
+            }
+        }
+
         if (HasLostControl)
         {
             // Постепенное затухание вращения
