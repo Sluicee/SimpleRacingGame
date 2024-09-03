@@ -54,6 +54,7 @@ public class SelectionManager : MonoBehaviour
     public static Sprite SelectedCarImage;
 
 #if YANDEX_SDK
+    [Header("Yandex SDK")]
     [SerializeField] private LeaderboardYG leaderboard;
     [SerializeField] private TMP_Text lbName;
 #endif
@@ -81,8 +82,8 @@ public class SelectionManager : MonoBehaviour
         purchaseButton.onClick.AddListener(PurchaseCar);
 
         Time.timeScale = 1.0f;
-
 #if YANDEX_SDK
+        MetricaSender.Send("GameLoaded");
         leaderboard.SetNameLB(trackDataList[selectedTrackIndex].trackSceneName.Replace(" ", ""));
         leaderboard.UpdateLB();
         lbName.text = trackDataList[selectedTrackIndex].trackSceneName;
@@ -255,6 +256,9 @@ public class SelectionManager : MonoBehaviour
             {
                 StartCoroutine(SmoothCarChange());
             }
+#if YANDEX_SDK
+            MetricaSender.Send("CarPurchased");
+#endif
         }
     }
 
@@ -272,7 +276,11 @@ public class SelectionManager : MonoBehaviour
 
         GameData.SelectedCarName = selectedCar.carPrefab.name;
         GameData.SelectedTrack = trackDataList[selectedTrackIndex].trackSceneName;
-
+#if YANDEX_SDK
+        MetricaSender.TriggerSend(selectedCar.carPrefab.name);
+        MetricaSender.TriggerSend(trackDataList[selectedTrackIndex].trackSceneName);
+        MetricaSender.Send("StartRace");
+#endif
         SceneManager.LoadScene(trackDataList[selectedTrackIndex].trackSceneName);
     }
 }

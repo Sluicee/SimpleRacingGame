@@ -19,6 +19,7 @@ namespace YG
         public float recordTime = 0f;
         public List<string> trackNames = new List<string>();
         public List<float> trackRecords = new List<float>();
+        public int racedTimes = 0;
 
 
         // Вы можете выполнить какие то действия при загрузке сохранений

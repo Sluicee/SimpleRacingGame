@@ -35,5 +35,12 @@ public class YGPlayerDataManager : IPlayerData
             return Mathf.Infinity;
         }
     }
+
+    public void RaceFinished()
+    {
+        YandexGame.savesData.racedTimes += 1;
+        YandexGame.SaveProgress();
+        MetricaSender.TriggerSend("Finishes: " + YandexGame.savesData.racedTimes);
+    }
 }
 #endif

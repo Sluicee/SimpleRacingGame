@@ -65,6 +65,7 @@ public class CurrencyManager : MonoBehaviour
     {
 #if YANDEX_SDK
         YandexGame.RewVideoShow(0);
+        MetricaSender.TriggerSend("CurrencyForAds");
 #elif PLAYER_PREFS
         currency += amount;
         currencyManager.SaveCurrency(currency);

@@ -16,7 +16,7 @@ public class Shop : MonoBehaviour
     {
         CurrencyManager.Instance.CurrencyForAds(amount);
     }
-
+#if YANDEX_SDK
     // Подписываемся на ивенты успешной/неуспешной покупки
     private void OnEnable()
     {
@@ -45,6 +45,7 @@ public class Shop : MonoBehaviour
         else if (id == "250000")
             CurrencyManager.Instance.AddCurrency(250000);
         UIAudio.PlayOneShot(buySoundEffect);
+        MetricaSender.TriggerSend("SuccessPurchased");
     }
 
     // Покупка не была произведена
@@ -52,4 +53,5 @@ public class Shop : MonoBehaviour
     {
         // Например, можно открыть уведомление о неуспешности покупки.
     }
+#endif
 }

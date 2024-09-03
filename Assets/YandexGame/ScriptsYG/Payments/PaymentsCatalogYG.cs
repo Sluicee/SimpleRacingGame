@@ -70,7 +70,7 @@ namespace YG
                 Destroy(rootSpawnPurchases.GetChild(i).gameObject);
             }
         }
-
+        
         private void SpawnPurchasesList()
         {
             purchases = new PurchaseYG[YandexGame.purchases.Length];

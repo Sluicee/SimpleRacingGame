@@ -66,6 +66,9 @@ public class RaceWinLose : MonoBehaviour
             SaveRecordTime(lapTime);
             newRecordText.SetActive(true);
             Debug.Log("New record! Time: " + FormatTime(lapTime));
+#if YANDEX_SDK
+            MetricaSender.TriggerSend("NewRecord");
+#endif
         }
         else
         {
@@ -79,7 +82,13 @@ public class RaceWinLose : MonoBehaviour
         carController.Stop();
         CurrencyManager.Instance.AddCurrency(award);
 
+        playerData.RaceFinished();
+
         PlaySound(winSound); // Воспроизведение звука победы
+
+#if YANDEX_SDK
+        MetricaSender.Send("SuccessFinish");
+#endif
     }
 
     public void ShowLoseScreen()
@@ -90,6 +99,10 @@ public class RaceWinLose : MonoBehaviour
         carController.Stop();
 
         PlaySound(loseSound); // Воспроизведение звука поражения
+#if YANDEX_SDK
+        MetricaSender.Send("FailedFinish");
+
+#endif
     }
 
     private void PlaySound(AudioClip clip)
