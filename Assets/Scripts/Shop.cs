@@ -3,6 +3,9 @@ using YG;
 
 public class Shop : MonoBehaviour
 {
+    [SerializeField] private AudioSource UIAudio;
+    [SerializeField] private AudioClip buySoundEffect;
+
     // Метод для добавления валюты
     public void AddCurrency(int amount)
     {
@@ -41,7 +44,7 @@ public class Shop : MonoBehaviour
             CurrencyManager.Instance.AddCurrency(100000);
         else if (id == "250000")
             CurrencyManager.Instance.AddCurrency(250000);
-
+        UIAudio.PlayOneShot(buySoundEffect);
     }
 
     // Покупка не была произведена

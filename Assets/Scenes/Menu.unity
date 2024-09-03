@@ -3465,6 +3465,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd303d1a521bf934b93801cf019a90df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIAudio: {fileID: 1278599793}
+  buySoundEffect: {fileID: 8300000, guid: 7f9bf5e8bc0f23f4788ab2975e0e749e, type: 3}
 --- !u!114 &422608136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5551,6 +5553,16 @@ PrefabInstance:
         type: 3}
       propertyPath: playerPhoto
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6895850703800868392, guid: 7a0e0f424819ac940b2c0d1fbf7a0bea,
+        type: 3}
+      propertyPath: quantityAround
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6895850703800868392, guid: 7a0e0f424819ac940b2c0d1fbf7a0bea,
+        type: 3}
+      propertyPath: maxQuantityPlayers
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

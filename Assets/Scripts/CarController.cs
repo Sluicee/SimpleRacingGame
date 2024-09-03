@@ -81,7 +81,7 @@ public class CarController : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // Управление ускорением
         if (isAccelerating && canMove)
@@ -101,10 +101,10 @@ public class CarController : MonoBehaviour
         rb.MovePosition(rb.position + forwardMovement);
 
         // Управление бустом
-        if (Input.GetKeyDown(KeyCode.Space) && !isBoosting && !hasBoosted && canMove)
-        {
-            StartBoost();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space) && !isBoosting && !hasBoosted && canMove)
+        //{
+        //    StartBoost();
+        //}
 
         if (isBoosting && Time.time > boostEndTime)
         {
