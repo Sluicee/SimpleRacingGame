@@ -4206,6 +4206,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carDataList:
+  - carPrefab: {fileID: 4551836244677153523, guid: 132bc4038f4b30944b9bf7f5f7d08668,
+      type: 3}
+    carImage: {fileID: 21300000, guid: 2f861093e9913d44fa4f6cd52408976c, type: 3}
+    carLockImage: {fileID: 21300000, guid: cfe05df769b29cc4b9f966b7d509e2f8, type: 3}
+    carSpeed: 40
+    carHandling: 60
+    carPower: 35
+    carPrice: 5000
+    isUnlocked: 1
   - carPrefab: {fileID: 8401238518219854423, guid: 0208421a0e5991b4fa53a081c69a7b15,
       type: 3}
     carImage: {fileID: 21300000, guid: 1b0c4154ed1cb434889800268c8152c7, type: 3}
@@ -4214,7 +4223,16 @@ MonoBehaviour:
     carHandling: 70
     carPower: 60
     carPrice: 50000
-    isUnlocked: 1
+    isUnlocked: 0
+  - carPrefab: {fileID: 4551836244677153523, guid: 50707b4539b655e40a9352da5f5e5441,
+      type: 3}
+    carImage: {fileID: 21300000, guid: ea213ab916ff1bf46be75f405d8f1c44, type: 3}
+    carLockImage: {fileID: 21300000, guid: 26e540e328b018f429974587eb92f6e3, type: 3}
+    carSpeed: 80
+    carHandling: 65
+    carPower: 85
+    carPrice: 90000
+    isUnlocked: 0
   - carPrefab: {fileID: 2480273696586578921, guid: b7a44665b71fa134e89bbcbf44c3339a,
       type: 3}
     carImage: {fileID: 21300000, guid: 874a3b583f789e14a933887f379d7d22, type: 3}

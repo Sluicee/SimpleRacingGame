@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 8
-  maxSpeed: 33
+  maxSpeed: 35
   brakeAcceleration: 10
   boostMultiplier: 3
   boostDuration: 5.5

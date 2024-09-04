@@ -1,21 +1,18 @@
 {
-  "idSave": 191,
+  "idSave": 268,
   "isFirstSession": false,
   "language": "ru",
   "promptDone": false,
-  "currency": 155000,
+  "currency": 19415000,
   "unlockedCars": [
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
     1,
-    2
+    2,
+    3,
+    4
   ],
-  "SelectedCarIndex": 1,
-  "SelectedTrackIndex": 4,
+  "SelectedCarIndex": 2,
+  "SelectedTrackIndex": 1,
   "recordTime": 0.0,
   "trackNames": [
     "Tempesta Circuit",
