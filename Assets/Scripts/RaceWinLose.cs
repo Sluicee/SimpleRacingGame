@@ -82,7 +82,7 @@ public class RaceWinLose : MonoBehaviour
         carController.Stop();
         CurrencyManager.Instance.AddCurrency(award);
 
-        playerData.RaceFinished();
+        playerData.RaceFinished(award);
 
         PlaySound(winSound); // Воспроизведение звука победы
 

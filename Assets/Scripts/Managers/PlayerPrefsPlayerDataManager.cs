@@ -15,7 +15,7 @@ public class PlayerPrefsPlayerDataManager : IPlayerData
         return PlayerPrefs.GetFloat(trackName + "_RecordTime", Mathf.Infinity);
     }
 
-    public void RaceFinished()
+    public void RaceFinished(int award)
     {
         // Проверяем, существует ли значение с ключом "RaceCounter"
         if (PlayerPrefs.HasKey(RaceCounterKey))

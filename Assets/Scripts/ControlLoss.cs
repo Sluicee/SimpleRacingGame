@@ -16,7 +16,7 @@ public class ControlLoss : MonoBehaviour
     public bool HasLostControl { get; private set; } = false; // Флаг для проверки потери контроля
 
     private float timeSinceLastCollision = 0f; // Время с последнего столкновения
-    private const float maxTimeWithoutCollision = 0.6f; // Максимальное время без касания трассы
+    [SerializeField] private const float maxTimeWithoutCollision = 1f; // Максимальное время без касания трассы
     [SerializeField] private string trackTag = "Track"; // Тег для зоны потери контроля
 
     [SerializeField] private float maxTiltAngleZ = 30f; // Максимальный угол наклона по Z

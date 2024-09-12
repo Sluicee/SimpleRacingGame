@@ -348,7 +348,7 @@ PrefabInstance:
     - target: {fileID: 1508054829134757634, guid: b7a44665b71fa134e89bbcbf44c3339a,
         type: 3}
       propertyPath: m_Size.z
-      value: 3.69
+      value: 3.35
       objectReference: {fileID: 0}
     - target: {fileID: 1973939072892739926, guid: b7a44665b71fa134e89bbcbf44c3339a,
         type: 3}
@@ -433,7 +433,7 @@ PrefabInstance:
     - target: {fileID: 2480273696586578921, guid: b7a44665b71fa134e89bbcbf44c3339a,
         type: 3}
       propertyPath: m_Name
-      value: Tofu Volga
+      value: Tofu 2108
       objectReference: {fileID: 0}
     - target: {fileID: 4272856206081911023, guid: b7a44665b71fa134e89bbcbf44c3339a,
         type: 3}

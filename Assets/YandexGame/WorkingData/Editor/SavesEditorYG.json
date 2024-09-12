@@ -1,18 +1,19 @@
 {
-  "idSave": 268,
+  "idSave": 311,
   "isFirstSession": false,
   "language": "ru",
   "promptDone": false,
-  "currency": 19415000,
+  "currency": 19477500,
   "unlockedCars": [
+    0,
     0,
     1,
     2,
     3,
     4
   ],
-  "SelectedCarIndex": 2,
-  "SelectedTrackIndex": 1,
+  "SelectedCarIndex": 3,
+  "SelectedTrackIndex": 2,
   "recordTime": 0.0,
   "trackNames": [
     "Tempesta Circuit",
@@ -25,8 +26,8 @@
     21.3946075,
     13.6638184,
     32.2962646,
-    41.9074249,
+    31.4386444,
     56.2241936
   ],
-  "racedTimes": 8
+  "racedTimes": 13
 }

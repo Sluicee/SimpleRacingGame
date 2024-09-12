@@ -116,7 +116,6 @@ public class SelectionManager : MonoBehaviour
         StartCoroutine(SmoothTrackChange());
 #if YANDEX_SDK
         leaderboard.SetNameLB(trackDataList[selectedTrackIndex].trackSceneName.Replace(" ", ""));
-        leaderboard.UpdateLB();
         lbName.text = trackDataList[selectedTrackIndex].trackSceneName;
 #endif
         trackDataManager.SaveTrackData(selectedTrackIndex);
@@ -130,7 +129,6 @@ public class SelectionManager : MonoBehaviour
         StartCoroutine(SmoothTrackChange());
 #if YANDEX_SDK
         leaderboard.SetNameLB(trackDataList[selectedTrackIndex].trackSceneName.Replace(" ", ""));
-        leaderboard.UpdateLB();
         lbName.text = trackDataList[selectedTrackIndex].trackSceneName;
 #endif
         trackDataManager.SaveTrackData(selectedTrackIndex);

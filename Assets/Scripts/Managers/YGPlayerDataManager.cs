@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Collections.Generic;
 public class YGPlayerDataManager : IPlayerData
 {
+    string MAIN_LEADERBOARD_NAME = "LEADERBOARD";
     public void SaveRecord(float recordTime, string trackName)
     {
         int trackIndex = YandexGame.savesData.trackNames.IndexOf(trackName);
@@ -36,10 +37,11 @@ public class YGPlayerDataManager : IPlayerData
         }
     }
 
-    public void RaceFinished()
+    public void RaceFinished(int award)
     {
         YandexGame.savesData.racedTimes += 1;
         YandexGame.SaveProgress();
+        YandexGame.NewLeaderboardScores(MAIN_LEADERBOARD_NAME, award);
         MetricaSender.TriggerSend("Finishes: " + YandexGame.savesData.racedTimes);
     }
 }

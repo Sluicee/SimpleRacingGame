@@ -533,8 +533,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: power
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 954102464d9e39d4d9792e02090d5823, type: 2}
-  m_sharedMaterial: {fileID: 6586108906731146535, guid: 954102464d9e39d4d9792e02090d5823,
+  m_fontAsset: {fileID: 11400000, guid: a64782c6a32eb23489e02869bbfb82b8, type: 2}
+  m_sharedMaterial: {fileID: 8845116926976195981, guid: a64782c6a32eb23489e02869bbfb82b8,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1496,8 +1496,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Speed
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 954102464d9e39d4d9792e02090d5823, type: 2}
-  m_sharedMaterial: {fileID: 6586108906731146535, guid: 954102464d9e39d4d9792e02090d5823,
+  m_fontAsset: {fileID: 11400000, guid: a64782c6a32eb23489e02869bbfb82b8, type: 2}
+  m_sharedMaterial: {fileID: 8845116926976195981, guid: a64782c6a32eb23489e02869bbfb82b8,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3052,6 +3052,194 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 293248767}
   m_CullTransparentMesh: 1
+--- !u!1 &317330843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 317330844}
+  - component: {fileID: 317330847}
+  - component: {fileID: 317330846}
+  - component: {fileID: 317330845}
+  m_Layer: 0
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &317330844
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317330843}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5241760}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 86}
+  m_SizeDelta: {x: 346.1855, y: 86.5464}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &317330845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317330843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 317330846}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u0440\u0435\u043A\u043B\u0430\u043C\u044B"
+  en: Loading Ad
+  tr: "Reklam Y\xFCkleniyor"
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: Chargement de l'annonce
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: Cargando anuncio
+  pt: "Carregando an\xFAncio"
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: Anzeige wird geladen
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 7/7 completed
+  componentTextField: 1
+  countLang: 7
+--- !u!114 &317330846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317330843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Loading Ad
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: cb4cabf3670a2974b8492ab2b473a5eb, type: 2}
+  m_sharedMaterial: {fileID: -6958707807998746541, guid: cb4cabf3670a2974b8492ab2b473a5eb,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 1024
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &317330847
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317330843}
+  m_CullTransparentMesh: 1
 --- !u!1 &367769791
 GameObject:
   m_ObjectHideFlags: 0
@@ -3352,8 +3540,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3419,7 +3607,7 @@ MonoBehaviour:
   textLComponent: {fileID: 0}
   infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
   text: 
-  ru: "\u0422\u0410\u0411\u041B\u0418\u0426\u0410 \u041B\u0418\u0414\u0415\u0420\u041E\u0412"
+  ru: "\u041B\u0418\u0414\u0415\u0420\u042B"
   en: LEADERBOARD
   tr: "L\u0130DERL\u0130K TABLOSU"
   az: 
@@ -4048,8 +4236,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Handling
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 954102464d9e39d4d9792e02090d5823, type: 2}
-  m_sharedMaterial: {fileID: 6586108906731146535, guid: 954102464d9e39d4d9792e02090d5823,
+  m_fontAsset: {fileID: 11400000, guid: a64782c6a32eb23489e02869bbfb82b8, type: 2}
+  m_sharedMaterial: {fileID: 8845116926976195981, guid: a64782c6a32eb23489e02869bbfb82b8,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6281,7 +6469,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 18}
+  m_SizeDelta: {x: 77.9644, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &994834315
 MonoBehaviour:
@@ -6303,10 +6491,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 99999
+  m_text: 999990000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 954102464d9e39d4d9792e02090d5823, type: 2}
-  m_sharedMaterial: {fileID: 6586108906731146535, guid: 954102464d9e39d4d9792e02090d5823,
+  m_fontAsset: {fileID: 11400000, guid: a64782c6a32eb23489e02869bbfb82b8, type: 2}
+  m_sharedMaterial: {fileID: 8845116926976195981, guid: a64782c6a32eb23489e02869bbfb82b8,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6836,7 +7024,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -134, y: -32}
+  m_AnchoredPosition: {x: -160.6, y: -32}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1063198032
@@ -7293,8 +7481,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: FREE FOR AD
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 954102464d9e39d4d9792e02090d5823, type: 2}
-  m_sharedMaterial: {fileID: 6586108906731146535, guid: 954102464d9e39d4d9792e02090d5823,
+  m_fontAsset: {fileID: 11400000, guid: a64782c6a32eb23489e02869bbfb82b8, type: 2}
+  m_sharedMaterial: {fileID: 8845116926976195981, guid: a64782c6a32eb23489e02869bbfb82b8,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -7326,7 +7514,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 16
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -8623,7 +8811,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LAST RACE
+  m_text: Speed Charge
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9c2d4d0aa6823d34bafd5b89ae848896, type: 2}
   m_sharedMaterial: {fileID: 8225220185908700847, guid: 9c2d4d0aa6823d34bafd5b89ae848896,
@@ -8718,16 +8906,16 @@ MonoBehaviour:
   textLComponent: {fileID: 0}
   infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
   text: 
-  ru: "\u041F\u041E\u0421\u041B\u0415\u0414\u041D\u042F\u042F \u0413\u041E\u041D\u041A\u0410"
-  en: LAST RACE
-  tr: "SON YARI\u015E"
+  ru: "\u0417\u0430\u0440\u044F\u0434 \u0421\u043A\u043E\u0440\u043E\u0441\u0442\u0438"
+  en: Speed Charge
+  tr: "H\u0131z \u015Earj\u0131"
   az: 
   be: 
   he: 
   hy: 
   ka: 
   et: 
-  fr: DERNIERE COURSE
+  fr: Frais de vitesse
   kk: 
   ky: 
   lt: 
@@ -8737,13 +8925,13 @@ MonoBehaviour:
   tk: 
   uk: 
   uz: 
-  es: ULTIMA CARRERA
-  pt: ULTIMA CORRIDA
+  es: "Carga r\xE1pida"
+  pt: Carga de velocidade
   ar: 
   id: 
   ja: 
   it: 
-  de: LETZTES RENNEN
+  de: Geschwindigkeitsladung
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
@@ -12168,6 +12356,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1721144516}
+    - targetCorrespondingSourceObject: {fileID: 3210080492572906468, guid: 44b91ba5f28f4ba4d9d62f6ee52d0673,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 317330844}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44b91ba5f28f4ba4d9d62f6ee52d0673, type: 3}
 --- !u!1 &1966968645
